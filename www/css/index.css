@@ -71,9 +71,6 @@ body {
 .header, .footer {
     flex: 1;
     padding: 20px 0;
-}
-
-.footer p {
     text-align: center;
 }
 
@@ -95,6 +92,12 @@ article.main {
     margin-bottom: 10px;
 }
 
+.form-general > .form-group select {
+    width: 100%;
+    display: block;
+    padding: 8px 10px;
+}
+
 .form-group:last-child {
     margin-bottom: 30px;
 }
@@ -104,4 +107,9 @@ div.wrapper-button-list button {
     margin-bottom: 10px;
     width: 100%;
     display: block;
+}
+
+.logo {
+    margin: 0 auto;
+    width: 100px;
 }

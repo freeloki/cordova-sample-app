@@ -36,12 +36,16 @@
         <title>Ardic Cordova Plugin API Demos</title>
     </head>
     <body>
+
         <div class="wrapper">
             <header class="header">
-                <img class="logo" src="img/logo.png" width="100">
+                <img class="logo" src="img/logo.png">
             </header>
             
             <article class="main">
+
+                <div id="logBox"></div>
+
                 <form class="form-general">
                     <div class="form-group">
                         <label>File Name:</label>
@@ -50,7 +54,14 @@
 
                     <div class="form-group">
                         <label>Directory Name:</label>
-                        <input id="directoryNameTxt" type="text" name="directoryName">
+                        <!--<input id="directoryNameTxt" type="text" name="directoryName"> -->
+
+                        <select id="selectCordovaDir">
+                            <option value="file:///data/user/0/com.ardic.android.cordova.test.app/files/">appDataDir</option>
+                            <option value="file:///android_asset/">applicationDirectory</option>
+                            <option value="cordova.file.applicationStorageDirectory">applicationStorageDirectory</option>
+                        </select>
+
                     </div>
                 </form>
                 
@@ -69,8 +80,11 @@
             <footer class="footer">
                 <p>© Copyright 2018, Powered by ARDIC Technology | All rights reserved.</p>
             </footer>
+
         </div>
+
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        
     </body>
 </html>

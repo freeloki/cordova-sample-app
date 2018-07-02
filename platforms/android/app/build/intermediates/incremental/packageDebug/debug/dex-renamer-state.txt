@@ -1,4 +1,4 @@
-#Mon Jul 02 11:35:27 EET 2018
-base.0=/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
+#Mon Jul 02 20:25:48 EET 2018
+base.0=/mnt/Linux-Extended/DEVELOPMENT/GIT/ARDIC/CORDOVA_APPS/cordova-sample-app/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
 renamed.0=classes.dex
-file.0=/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0/classes.dex

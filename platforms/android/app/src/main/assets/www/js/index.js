@@ -21,19 +21,46 @@ var fsInstance
 var fileName
 var fileDir
 
+
+var fileApiCallbacks = {
+
+  onErrorLoadFs: function () {
+    console.log('Error occured: ' )
+    app.writeLog('Error occured: ' )
+
+  },
+  onErrorCreateFile: function () {        
+    console.log('Error occured: ')
+    app.writeLog('Error occured: ')
+
+
+  },
+
+  onErrorReadFile: function () {
+    console.log('Error occured: ')
+    app.writeLog('Error occured: ')
+
+  }
+
+}
 var app = {
   // Application Constructor
+
+  writeLog: function(msg,extra){
+    document.getElementById('logBox').innerHTML = msg + extra
+  },
+
   initialize: function () {
     document.addEventListener('deviceready', this.onDeviceReady.bind(this), false)
     document.getElementById('getFileSystem').addEventListener('click', this.getFileSystemEvent)
     document.getElementById('clickMeBtn').addEventListener('click', this.clickEvent)
-    document.getElementById('createFile').addEventListener('click', createFile)
-    document.getElementById('deleteFile').addEventListener('click', deleteFile)
-    document.getElementById('readFile').addEventListener('click', readFile)
-    document.getElementById('makeDir').addEventListener('click', makeDir)
-    document.getElementById('removeDir').addEventListener('click', removeDir)
-    document.getElementById('moveFile').addEventListener('click', moveFile)
-    document.getElementById('listFiles').addEventListener('click', listFiles)
+    document.getElementById('createFile').addEventListener('click', this.createFile)
+    document.getElementById('deleteFile').addEventListener('click', this.deleteFile)
+    document.getElementById('readFile').addEventListener('click', this.readFile)
+    document.getElementById('makeDir').addEventListener('click', this.makeDir)
+    document.getElementById('removeDir').addEventListener('click', this.removeDir)
+    document.getElementById('moveFile').addEventListener('click', this.moveFile)
+    document.getElementById('listFiles').addEventListener('click', this.listFiles)
   },
 
   // deviceready Event Handler
@@ -41,12 +68,10 @@ var app = {
   // Bind any cordova events here. Common events are:
   // 'pause', 'resume', etc.
   onDeviceReady: function () {
-    this.receivedEvent('deviceready')
   },
   // Update DOM on a Received Event
   receivedEvent: function (id) {
     var parentElement = document.getElementById(id)
-    var listeningElement = parentElement.querySelector('.listening')
     var receivedElement = parentElement.querySelector('.received')
 
     listeningElement.setAttribute('style', 'display:none;')
@@ -78,74 +103,106 @@ var app = {
   },
 
   getFileSystemEvent: function () {
-    console.log('FS Event clicked')
+    console.log('Get Fs clicked')
     console.log(cordova.file)
-  }
-}
+    writeLog('Get Fs clicked',cordova.file.toString())
 
-var fileApiCallbacks = {
-
-  onErrorLoadFs: function (err) {
-    console.log('Error occured: ' + err.toString())
-  },
-  onErrorCreateFile: function () {        
-    console.log('Error occured: ' + err.toString())
   },
 
-  onErrorReadFile: function () {      
-  }
+  writeFile: function (fileEntry, dataObj) {
+    // Create a FileWriter object for our FileEntry (log.txt).
+  
+    console.log('writeFile clicked')
+  
+    fileEntry.createWriter(function (fileWriter) {
+  
+      fileWriter.onwriteend = function () {
+        console.log('Successful file write...')
+        document.getElementById('logBox').innerHTML += 'File write success: ' + fileName
+        app.readFile(fileEntry)
+      }
+  
+      fileWriter.onerror = function (e) {
+        console.log('Failed file write: ' + e.toString())
+      }
+  
+      // If data object is not passed in,
+      // create a new Blob instead.
+      if (!dataObj) {
+        dataObj = new Blob(['some file data'], { type: 'text/plain' })
+      }
+  
+      fileWriter.write(dataObj)
+    })
+  },
+  
+  readFile: function () {
+  
+    console.log('readFile clicked')
+  
+  
+    fileName = document.getElementById('fileNameTxt').value
+  
+    fileDir = cordova.file.dataDirectory
 
+    console.log('file dir: ' + fileDir)
+
+    window.resolveLocalFileSystemURL(fileDir, function (dirEntry) {
+      console.log('file system open: ' + dirEntry.name)
+  
+  
+      dirEntry.getFile(fileName, {create: true, exclusive: false}, function (fileEntry) {
+  
+        fileEntry.file(function (file) {
+          var reader = new FileReader()
+      
+          reader.onloadend = function () {
+            console.log('Successful file read: ' + this.result)
+  
+            // displayFileData(fileEntry.fullPath + ": " + this.result);
+          }
+          reader.readAsText(file)
+  
+          console.log("Reader:" + reader)
+        }, fileApiCallbacks.onErrorReadFile())
+        
+      }, fileApiCallbacks.onErrorCreateFile())
+    }, fileApiCallbacks.onErrorLoadFs())
+  
+  
+  
+  
+  
+  },
+  
+  createFile: function () {
+  
+    console.log('createFile clicked')
+  
+    fileName = document.getElementById('fileNameTxt').value
+  
+    //fileDir = cordova.file.dataDirectory
+  
+    console.log('Create File Clicked: ' + fileName)
+  
+  
+    window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function (dirEntry) {
+      app.writeLog('file system open: ' , dirEntry.name)
+  
+  
+      dirEntry.getFile(fileName, {create: true, exclusive: false}, function (fileEntry) {
+        app.writeFile(fileEntry, null, false)
+      }, fileApiCallbacks.onErrorCreateFile)
+    }, fileApiCallbacks.onErrorLoadFs)
+  
+  }
+  
+  
+
+
+  
 }
 
 app.initialize()
 
-function writeFile (fileEntry, dataObj) {
-  // Create a FileWriter object for our FileEntry (log.txt).
-  fileEntry.createWriter(function (fileWriter) {
 
-    fileWriter.onwriteend = function () {
-      console.log('Successful file write...')
-      document.getElementById('logBox').innerHTML += 'File write success: ' + fileName
-      readFile(fileEntry)
-    }
-
-    fileWriter.onerror = function (e) {
-      console.log('Failed file write: ' + e.toString())
-    }
-
-    // If data object is not passed in,
-    // create a new Blob instead.
-    if (!dataObj) {
-      dataObj = new Blob(['some file data'], { type: 'text/plain' })
-    }
-
-    fileWriter.write(dataObj)
-  })
-}
-
-function readFile (fileEntry) {
-  fileEntry.file(function (file) {
-    var reader = new FileReader()
-
-    reader.onloadend = function () {
-      console.log('Successful file read: ' + this.result)
-      // displayFileData(fileEntry.fullPath + ": " + this.result);
-    }
-    reader.readAsText(file)
-  }, app.onErrorReadFile)
-}
-
-function createFile () {
-
-  fileName = document.getElementById('fileNameTxt').value
-
-  console.log('Create File Clicked: ' + fileName)
-
-  window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function (dirEntry) {
-    console.log('file system open: ' + dirEntry.name)
-
-    dirEntry.getFile(fileName, {create: true, exclusive: false}, function (fileEntry) {
-      writeFile(fileEntry, null, false)
-    }, fileApiCallbacks.onErrorCreateFile)
-  }, fileApiCallbacks.onErrorLoadFs)
-}
