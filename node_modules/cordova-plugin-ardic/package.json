@@ -1,0 +1,68 @@
+{
+  "_from": "cordova-plugin-ardic@1.0.5",
+  "_id": "cordova-plugin-ardic@1.0.5",
+  "_inBundle": false,
+  "_integrity": "sha512-4+92mnCBwg53htMhP5Ks2crfJaE964I40UmMynnpMUxdca/oQLpWp0tHOwhxW3RR+TZmVx0qD0BKSowY1q1OwQ==",
+  "_location": "/cordova-plugin-ardic",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "cordova-plugin-ardic@1.0.5",
+    "name": "cordova-plugin-ardic",
+    "escapedName": "cordova-plugin-ardic",
+    "rawSpec": "1.0.5",
+    "saveSpec": null,
+    "fetchSpec": "1.0.5"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-ardic/-/cordova-plugin-ardic-1.0.5.tgz",
+  "_shasum": "38e81a1385bb4b7d828cdcfe2ce726f2c904f6a2",
+  "_spec": "cordova-plugin-ardic@1.0.5",
+  "_where": "/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication",
+  "author": {
+    "name": "ARDIC R&D"
+  },
+  "bugs": {
+    "url": "https://issues.apache.org/jira/browse/CB"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-ardic",
+    "platforms": [
+      "android",
+      "browser"
+    ]
+  },
+  "deprecated": false,
+  "description": "Ardic Android Plugin",
+  "engines": {
+    "cordovaDependencies": {
+      "5.0.0": {
+        "cordova-android": ">=6.3.0"
+      },
+      "7.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "homepage": "https://github.com/apache/cordova-plugin-system9#readme",
+  "keywords": [
+    "cordova",
+    "file",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-browser"
+  ],
+  "license": "Apache-2.0",
+  "name": "cordova-plugin-ardic",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apache/cordova-plugin-system9.git"
+  },
+  "types": "./types/index.d.ts",
+  "version": "1.0.5"
+}
