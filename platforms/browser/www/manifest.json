@@ -1,10 +1,10 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "HelloCordova",
-  "short_name": "HelloCordova",
+  "name": "Ardic Cordova Plugin API Demos",
+  "short_name": "Ardic Cordova Plugin API Demos",
   "version": "com.ardic.android.cordova.test.app",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "description": "A sample Apache Cordova application for Ardic Cordova Plugin API's.",
   "author": "Apache Cordova Team",
   "icons": [],
   "start_url": "index.html"

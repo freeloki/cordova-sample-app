@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ardic.android.cordova.test.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HelloCordova</name>
+    <name>Ardic Cordova Plugin API Demos</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        A sample Apache Cordova application for Ardic Cordova Plugin API's.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
+    <author email="yavuz.erzurumlu@ardictech.com" href="http://www.ardictech.com/">
         Apache Cordova Team
     </author>
     <content src="index.html" />
