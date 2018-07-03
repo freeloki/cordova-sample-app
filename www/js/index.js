@@ -20,33 +20,34 @@
 var fsInstance
 var fileName
 var fileDir
-
-
+var entry;
 var fileApiCallbacks = {
 
-  onErrorLoadFs: function () {
-    console.log('Error occured: ' )
-    app.writeLog('Error occured: ' )
-
-  },
-  onErrorCreateFile: function () {        
-    console.log('Error occured: ')
-    app.writeLog('Error occured: ')
-
-
+  onErrorLoadFs: function (err) {
+    console.log('Error occured: ' + err.code)
+    app.writeLog('Error occured: ', err.code)
   },
 
-  onErrorReadFile: function () {
-    console.log('Error occured: ')
-    app.writeLog('Error occured: ')
+  onErrorCreateFile: function (err) {        
+    console.log('Error occured: ' + err.code)
+    app.writeLog('Error occured: ', err.code)
+    console.log("Remove failure:" + JSON.stringify(err))
+  },
 
+  onErrorReadFile: function (err) {
+    console.log('Error occured: ' + err.code)
+    app.writeLog('Error occured: ', err.code)
+  },
+
+  onErrorCreateDir: function (err) {
+    console.log('Error occured: ' + err.code)
+    app.writeLog('Error occured: ', err.code)
   }
-
 }
 var app = {
   // Application Constructor
 
-  writeLog: function(msg,extra){
+  writeLog: function (msg, extra) {
     document.getElementById('logBox').innerHTML = msg + extra
   },
 
@@ -60,6 +61,7 @@ var app = {
     document.getElementById('removeDir').addEventListener('click', this.removeDir)
     document.getElementById('moveFile').addEventListener('click', this.moveFile)
     document.getElementById('listFiles').addEventListener('click', this.listFiles)
+
   },
 
   // deviceready Event Handler
@@ -67,25 +69,23 @@ var app = {
   // Bind any cordova events here. Common events are:
   // 'pause', 'resume', etc.
   onDeviceReady: function () {
-  },
-  // Update DOM on a Received Event
-  receivedEvent: function (id) {
-    var parentElement = document.getElementById(id)
-    var receivedElement = parentElement.querySelector('.received')
-
-    listeningElement.setAttribute('style', 'display:none;')
-    receivedElement.setAttribute('style', 'display:block;')
-
-    console.log('Received Event: ' + id)
+    document.getElementById('selectCordovaDir').innerHTML += '<option value="' + cordova.file.externalApplicationStorageDirectory + '">External App Storage Directory</option>'
+    document.getElementById('selectCordovaDir').innerHTML += '<option value="' + cordova.file.externalCacheDirectory + '">External App Cache Directory</option>'
+    document.getElementById('selectCordovaDir').innerHTML += '<option value="' + cordova.file.externalDataDirectory + '">External Application Data Directory</option>'
+    document.getElementById('selectCordovaDir').innerHTML += '<option value="' + cordova.file.externalRootDirectory + '">External Root Directory</option>'
+    document.getElementById('selectCordovaDir').innerHTML += '<option value="' + cordova.file.dataDirectory + '">Application Data Directory</option>'
+    document.getElementById('selectCordovaDir').innerHTML += '<option value="' + cordova.file.cacheDirectory + '">Application Cache Directory</option>'
+    document.getElementById('selectCordovaDir').innerHTML += '<option value="' + cordova.file.applicationDirectory + '">Application Directory (Assets)</option>'
+    document.getElementById('selectCordovaDir').innerHTML += '<option value="' + cordova.file.applicationStorageDirectory + '">Application Storage Directory</option>'
   },
 
   getFileSystemEvent: function () {
 
-    var applicationStorageDir = document.getElementById('selectCordovaDir').value;
+    var applicationStorageDir = document.getElementById('selectCordovaDir').value
   
     console.log('Get Fs clicked')
     console.log(applicationStorageDir)
-    console.log(cordova.file.applicationDirectory)
+    console.log(cordova.file)
 
 
   },
@@ -117,73 +117,163 @@ var app = {
     })
   },
   
-  readFile: function () {
+  makeDir: function () {
   
-    console.log('readFile clicked')
+    console.log('makeDir clicked')
   
   
     fileName = document.getElementById('fileNameTxt').value
-  
-    fileDir = cordova.file.dataDirectory
+    var selectedDir = document.getElementById('selectCordovaDir').value
 
-    console.log('file dir: ' + fileDir)
+    console.log('file dir: ' + selectedDir)
 
-    window.resolveLocalFileSystemURL(fileDir, function (dirEntry) {
+    window.resolveLocalFileSystemURL(selectedDir, function (dirEntry) {
       console.log('file system open: ' + dirEntry.name)
+      dirEntry.getDirectory(fileName,{ create: true }, function (subddirEntry) {
+        console.log('Directory created successfully.')
+      },fileApiCallbacks.onErrorCreateDir)
+    }, fileApiCallbacks.onErrorLoadFs)
+  },
+
+  removeDir: function () {
+  
+    console.log('removeDir clicked')
   
   
-      dirEntry.getFile(fileName, {create: true, exclusive: false}, function (fileEntry) {
-  
-        fileEntry.file(function (file) {
-          var reader = new FileReader()
-      
-          reader.onloadend = function () {
-            console.log('Successful file read: ' + this.result)
-  
-            // displayFileData(fileEntry.fullPath + ": " + this.result);
-          }
-          reader.readAsText(file)
-  
-          console.log("Reader:" + reader)
-        }, fileApiCallbacks.onErrorReadFile())
+    fileName = document.getElementById('fileNameTxt').value
+    var selectedDir = document.getElementById('selectCordovaDir').value
+
+    console.log('file dir: ' + selectedDir)
+
+    window.resolveLocalFileSystemURL(selectedDir, function (dirEntry) {
+      console.log('file system open: ' + dirEntry.name)
+      dirEntry.getDirectory(fileName,{ create: false }, function (subddirEntry) {
         
-      }, fileApiCallbacks.onErrorCreateFile())
-    }, fileApiCallbacks.onErrorLoadFs())
-  
-  
-  
-  
-  
+        subddirEntry.remove(function (entry){
+
+          console.log("Directory Remove success:" + entry)
+        }, function failure(err){
+          console.log("Directory Remove failure:" + JSON.stringify(err))
+        })
+      },fileApiCallbacks.onErrorCreateDir)
+    }, fileApiCallbacks.onErrorLoadFs)
   },
   
-  createFile: function () {
-  
-    console.log('createFile clicked')
-  
+  createFile: function () {  
     fileName = document.getElementById('fileNameTxt').value
-  
-    //fileDir = cordova.file.dataDirectory
-  
-    console.log('Create File Clicked: ' + fileName)
-  
-    var applicationStorageDir = document.getElementById('selectCordovaDir').value;
-    console.log(cordova.file.dataDirectory)
     
-    window.resolveLocalFileSystemURL(applicationStorageDir, function (dirEntry) {
-      app.writeLog('file system open: ' , dirEntry.name)
+    console.log('Create File Clicked!. Filename: ' + fileName)
   
+    var selectedDir = document.getElementById('selectCordovaDir').value
+
+    console.log('Selected Dir:' + selectedDir)
+
+    window.resolveLocalFileSystemURL(selectedDir, function (dirEntry) {
+      console.log('File System open: ' + dirEntry.name)
   
       dirEntry.getFile(fileName, {create: true, exclusive: false}, function (fileEntry) {
-        app.writeFile(fileEntry, null, false)
+        //app.writeFile(fileEntry, null, false)
+        console.log('File creation success: ' + fileEntry.name)
       }, fileApiCallbacks.onErrorCreateFile)
+     
     }, fileApiCallbacks.onErrorLoadFs)
-  
-  }
-  
-  
+    },
+
+    deleteFile: function () {
+
+      fileName = document.getElementById('fileNameTxt').value
+
+      console.log('Delete File Clicked: ' + fileName )
+      var selectedDir = document.getElementById('selectCordovaDir').value
+
+      window.resolveLocalFileSystemURL(selectedDir, function (dirEntry) {
+        console.log('File System open: ' + dirEntry.name)
+    
+        dirEntry.getFile(fileName, {create: false, exclusive: false}, function (fileEntry) {
+          //app.writeFile(fileEntry, null, false)
+          fileEntry.remove(function (entry){
+
+            console.log("Remove success:" + entry)
+          }, function failure(err){
+            console.log("Remove failure:" + JSON.stringify(err))
+          })
+        }, fileApiCallbacks.onErrorCreateFile)
+       
+      }, fileApiCallbacks.onErrorLoadFs)
+    },
+
+    moveFile: function() {
 
 
+// create awesome file for move to.
+      fileName = document.getElementById('fileNameTxt').value
+
+      var selectedDir = document.getElementById('selectCordovaDir').value
+
+      console.log('Move File Clicked!. Filename: ' + fileName)
+
+
+      window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function (dirEntry) {
+      console.log('File System open: ' + dirEntry.name)
+
+      dirEntry.getFile(fileName, {create: true, exclusive: false}, function (fileEntry) {
+      //app.writeFile(fileEntry, null, false)
+      console.log('File creation success: ' + fileEntry.name)
+
+      console.log('File full path: ' + fileEntry.fullPath)
+     entry = fileEntry;
+
+
+      window.resolveLocalFileSystemURL(selectedDir, function(newDirEntry){
+
+        console.log('newDirEntry: ' + newDirEntry)
+
+        fileEntry.moveTo(newDirEntry, fileName, function (file){
+          console.log('File move success: ' + file.name)
   
+  
+        }, function (err){
+          console.log('File move error: ' + err.code)
+        });
+
+        },fileApiCallbacks.onErrorLoadFs)
+
+      }, fileApiCallbacks.onErrorCreateFile)
+ 
+    }, fileApiCallbacks.onErrorLoadFs)
+  },
+
+  readFile: function () {  
+    fileName = document.getElementById('fileNameTxt').value
+    
+    console.log('Create File Clicked!. Filename: ' + fileName)
+  
+    var selectedDir = document.getElementById('selectCordovaDir').value
+
+    console.log('Selected Dir:' + selectedDir)
+
+    window.resolveLocalFileSystemURL(selectedDir, function (dirEntry) {
+      console.log('File System open: ' + dirEntry.name)
+  
+      dirEntry.getFile(fileName, {create: false, exclusive: false}, function (fileEntry) {
+        //app.writeFile(fileEntry, null, false)
+        console.log('File creation success: ' + fileEntry.name)
+
+        fileEntry.file(function (file) {
+          var reader = new FileReader();
+  
+          reader.onloadend = function() {
+              console.log("Successful file read: " + this.result);
+              displayFileData(fileEntry.fullPath + ": " + this.result);
+          };
+  
+          console.log('File:' + reader.readAsText(file) )
+  
+      }, fileApiCallbacks.onErrorReadFile);
+      }, fileApiCallbacks.onErrorCreateFile)
+     
+    }, fileApiCallbacks.onErrorLoadFs)
+    },
 }
 
 app.initialize()

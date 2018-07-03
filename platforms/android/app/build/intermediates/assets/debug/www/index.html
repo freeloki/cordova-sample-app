@@ -36,47 +36,53 @@
         <title>Ardic Cordova Plugin API Demos</title>
     </head>
     <body>
-        <div class="app">
 
-            <h1>Ardic Cordova Plugin API Demos</h1>
-           
-          <!--  <div id="deviceready" class="blink">
-              <!--  <p class="event listening">Connecting to Device</p> -->
-               <!-- <p class="event received">Device is Ready</p> -->
-          <!--  </div> -->
-                <form>
-                    File name:<br>
-                    <input id="fileNameTxt" type="text" name="filename"><br>
-                    Directory name:<br>
-                    <input id="directoryNameTxt" type="text" name="directoryName">
-                  </form>
-                <button id="clickMeBtn">Click me</button>
-                <br>
-                <button id="getFileSystem">GetFS</button>
-                <br>
-                <button id="createFile">CreateFile</button>
-                <br>
-                <button id="deleteFile">DeleteFile</button>
-                <br>
-                <button id="readFile">ReadFile</button>
-                <br>
-                <button id="makeDir">MakeDirectory</button>
-                <br>
-                <button id="removeDir">RemoveDirectory</button>
-                <br>
-                <button id="moveFile">MoveFile</button>
-                <br>
-                <button id="listFiles">ListFiles</button>
+        <div class="wrapper">
+            <header class="header">
+                <img class="logo" src="img/logo.png">
+            </header>
+            
+            <article class="main">
 
-                <br>
-                <div id='logBox' >
+                <div id="logBox"></div>
 
+                <form class="form-general">
+                    <div class="form-group">
+                        <label>File Name:</label>
+                        <input id="fileNameTxt" type="text" name="filename">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Directory Name:</label>
+                        <!--<input id="directoryNameTxt" type="text" name="directoryName"> -->
+                        <select id="selectCordovaDir">
+                        <!--<option value="file:///data/user/0/com.ardic.android.cordova.test.app/files/">applicationDataDirectory</option>
+                           // <option value="file:///data/user/0/com.ardic.android.cordova.test.app/">applicationStorageDirectory</option> -->
+                        </select>
+
+                    </div>
+                </form>
+                
+                <div class="wrapper-button-list">
+                    <button id="getFileSystem">GetFS</button>
+                    <button id="createFile">CreateFile</button>
+                    <button id="deleteFile">DeleteFile</button>
+                    <button id="readFile">ReadFile</button>
+                    <button id="makeDir">MakeDirectory</button>
+                    <button id="removeDir">RemoveDirectory</button>
+                    <button id="moveFile">MoveFile</button>
+                    <button id="listFiles">ListFiles</button>
                 </div>
-            <!--</div>-->
-        </div>
+            </article>
 
+            <footer class="footer">
+                <p>© Copyright 2018, Powered by ARDIC Technology | All rights reserved.</p>
+            </footer>
+
+        </div>
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        
     </body>
 </html>
