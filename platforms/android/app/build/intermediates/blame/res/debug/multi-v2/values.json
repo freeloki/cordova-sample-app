@@ -21,50 +21,6 @@
                     }
                 }
             ]
-        },
-        {
-            "outputFile": "/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
-            "map": [
-                {
-                    "source": "/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/values/strings.xml",
-                    "from": {
-                        "startLines": "-1,2,-1",
-                        "startColumns": "-1,4,-1",
-                        "startOffsets": "-1,55,-1",
-                        "endColumns": "-1,67,-1",
-                        "endOffsets": "-1,118,-1"
-                    },
-                    "to": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,119,187",
-                        "endColumns": "63,67,58",
-                        "endOffsets": "114,182,241"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/mnt/Linux-Extended/DEVELOPMENT/GIT/ARDIC/CORDOVA_APPS/cordova-sample-app/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
-            "map": [
-                {
-                    "source": "/mnt/Linux-Extended/DEVELOPMENT/GIT/ARDIC/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/values/strings.xml",
-                    "from": {
-                        "startLines": "4,2,3",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "182,55,123",
-                        "endColumns": "63,67,58",
-                        "endOffsets": "241,118,177"
-                    },
-                    "to": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,119,187",
-                        "endColumns": "63,67,58",
-                        "endOffsets": "114,182,241"
-                    }
-                }
-            ]
         }
     ]
 }

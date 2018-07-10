@@ -173,10 +173,10 @@ document.getElementById(id).style.display = 'none';
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title">Lint Report: 13 warnings</span>
+      <span class="mdl-layout-title">Lint Report: 12 warnings</span>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-Check performed at Thu Jun 28 16:57:57 EET 2018      </nav>
+Check performed at Fri Jul 06 16:35:59 EET 2018      </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
@@ -191,7 +191,6 @@ Check performed at Thu Jun 28 16:57:57 EET 2018      </nav>
       <a class="mdl-navigation__link" href="#GradleOverrides"><i class="material-icons warning-icon">warning</i>Value overridden by Gradle build script (1)</a>
       <a class="mdl-navigation__link" href="#AllowBackup"><i class="material-icons warning-icon">warning</i>AllowBackup/FullBackupContent Problems (2)</a>
       <a class="mdl-navigation__link" href="#UnusedResources"><i class="material-icons warning-icon">warning</i>Unused resources (2)</a>
-      <a class="mdl-navigation__link" href="#IconLauncherShape"><i class="material-icons warning-icon">warning</i>The launcher icon shape should use a distinct silhouette (1)</a>
       <a class="mdl-navigation__link" href="#IconDipSize"><i class="material-icons warning-icon">warning</i>Icon density-independent size validation (1)</a>
       <a class="mdl-navigation__link" href="#GoogleAppIndexingWarning"><i class="material-icons warning-icon">warning</i>Missing support for Firebase App Indexing (1)</a>
     </nav>
@@ -238,9 +237,6 @@ Check performed at Thu Jun 28 16:57:57 EET 2018      </nav>
 <a href="#UnusedResources">UnusedResources</a>: Unused resources</td></tr>
 <tr><td class="countColumn"></td><td class="categoryColumn"><a href="#Usability:Icons">Usability:Icons</a>
 </td></tr>
-<tr>
-<td class="countColumn">1</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
-<a href="#IconLauncherShape">IconLauncherShape</a>: The launcher icon shape should use a distinct silhouette</td></tr>
 <tr>
 <td class="countColumn">1</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#IconDipSize">IconDipSize</a>: Icon density-independent size validation</td></tr>
@@ -685,49 +681,7 @@ Dismiss</button>            </div>
             </div>
           </section>
 <a name="Usability:Icons"></a>
-<a name="IconLauncherShape"></a>
-<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="IconLauncherShapeCard" style="display: block;">
-            <div class="mdl-card mdl-cell mdl-cell--12-col">
-  <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text">The launcher icon shape should use a distinct silhouette</h2>
-  </div>
-              <div class="mdl-card__supporting-text">
-<div class="issue">
-<div class="warningslist">
-<span class="location"><a href="../../src/main/res/mipmap-xxhdpi/icon.png">../../src/main/res/mipmap-xxhdpi/icon.png</a></span>: <img class="embedimage" align="right" src="../../src/main/res/mipmap-xxhdpi/icon.png" /><span class="message">Launcher icons should not fill every pixel of their square region; see the design guide for details</span><br clear="right"/>
-</div>
-<div class="metadata"><div class="explanation" id="explanationIconLauncherShape" style="display: none;">
-According to the Android Design Guide (<a href="http://developer.android.com/design/style/iconography.html">http://developer.android.com/design/style/iconography.html</a>) your launcher icons should "use a distinct silhouette", a "three-dimensional, front view, with a slight perspective as if viewed from above, so that users perceive some depth."<br/>
-<br/>
-The unique silhouette implies that your launcher icon should not be a filled square.<br/><div class="moreinfo">More info: <a href="http://developer.android.com/design/style/iconography.html">http://developer.android.com/design/style/iconography.html</a>
-</div>To suppress this error, use the issue id "IconLauncherShape" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
-<br/></div>
-</div>
-</div>
-<div class="chips">
-<span class="mdl-chip">
-    <span class="mdl-chip__text">IconLauncherShape</span>
-</span>
-<span class="mdl-chip">
-    <span class="mdl-chip__text">Icons</span>
-</span>
-<span class="mdl-chip">
-    <span class="mdl-chip__text">Usability</span>
-</span>
-<span class="mdl-chip">
-    <span class="mdl-chip__text">Warning</span>
-</span>
-<span class="mdl-chip">
-    <span class="mdl-chip__text">Priority 6/10</span>
-</span>
-</div>
-              </div>
-              <div class="mdl-card__actions mdl-card--border">
-<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationIconLauncherShapeLink" onclick="reveal('explanationIconLauncherShape');">
-Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="IconLauncherShapeCardLink" onclick="hideid('IconLauncherShapeCard');">
-Dismiss</button>            </div>
-            </div>
-          </section><a name="IconDipSize"></a>
+<a name="IconDipSize"></a>
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="IconDipSizeCard" style="display: block;">
             <div class="mdl-card mdl-cell mdl-cell--12-col">
   <div class="mdl-card__title">
@@ -740,10 +694,10 @@ Dismiss</button>            </div>
 <ul></ul><button id="Location1DivLink" onclick="reveal('Location1Div');" />+ 5 Additional Locations...</button>
 <div id="Location1Div" style="display: none">
 Additional locations: <ul>
-<li> <span class="location"><a href="../../src/main/res/drawable-land-mdpi/screen.png">../../src/main/res/drawable-land-mdpi/screen.png</a></span>
 <li> <span class="location"><a href="../../src/main/res/drawable-land-xxxhdpi/screen.png">../../src/main/res/drawable-land-xxxhdpi/screen.png</a></span>
-<li> <span class="location"><a href="../../src/main/res/drawable-land-xxhdpi/screen.png">../../src/main/res/drawable-land-xxhdpi/screen.png</a></span>
+<li> <span class="location"><a href="../../src/main/res/drawable-land-mdpi/screen.png">../../src/main/res/drawable-land-mdpi/screen.png</a></span>
 <li> <span class="location"><a href="../../src/main/res/drawable-land-hdpi/screen.png">../../src/main/res/drawable-land-hdpi/screen.png</a></span>
+<li> <span class="location"><a href="../../src/main/res/drawable-land-xxhdpi/screen.png">../../src/main/res/drawable-land-xxhdpi/screen.png</a></span>
 <li> <span class="location"><a href="../../src/main/res/drawable-land-xhdpi/screen.png">../../src/main/res/drawable-land-xhdpi/screen.png</a></span>
 </ul>
 </div><br/><br/>

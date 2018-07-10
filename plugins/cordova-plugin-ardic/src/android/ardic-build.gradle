@@ -1,0 +1,15 @@
+repositories {
+    mavenLocal()
+    jcenter()
+    maven {
+        url 'http://archiva.ardictech.com/repository/repo'
+    }
+    maven {
+        url "https://maven.google.com"
+    }
+}
+
+dependencies {
+    println('AFEX integration success!')
+    implementation 'com.ardic.android:libafexmanager-full:1.0.0'
+}

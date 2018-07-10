@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="4" by="lint 3.0.0">
+<issues format="4" by="lint 3.0.1">
 
     <issue
         id="GradleDependency"
@@ -13,7 +13,7 @@
         errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         quickfix="studio">
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/CordovaLib/build.gradle"
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/CordovaLib/build.gradle"
             line="34"
             column="9"/>
     </issue>
@@ -29,7 +29,7 @@
         errorLine1="            if(android.os.Build.VERSION.SDK_INT &lt; android.os.Build.VERSION_CODES.HONEYCOMB &amp;&amp;"
         errorLine2="               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemWebViewEngine.java"
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemWebViewEngine.java"
             line="162"
             column="16"/>
     </issue>

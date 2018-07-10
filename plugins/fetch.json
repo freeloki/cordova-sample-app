@@ -9,8 +9,8 @@
   },
   "cordova-plugin-ardic": {
     "source": {
-      "type": "registry",
-      "id": "cordova-plugin-ardic@1.0.5"
+      "type": "local",
+      "path": "/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/node_modules/cordova-plugin-ardic"
     },
     "is_top_level": true,
     "variables": {}

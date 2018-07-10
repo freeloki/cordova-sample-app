@@ -91,6 +91,7 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
+apply from: "../cordova-plugin-ardic/app-ardic-build.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()
@@ -108,6 +109,7 @@ if (ext.cdvBuildToolsVersion == null) {
     //ext.cdvBuildToolsVersion = project.ext.defaultBuildToolsVersion
 }
 if (ext.cdvDebugSigningPropertiesFile == null && file('../debug-signing.properties').exists()) {
+    println("-------------------------------------------------------------------------- HOHOHO")
     ext.cdvDebugSigningPropertiesFile = '../debug-signing.properties'
 }
 if (ext.cdvReleaseSigningPropertiesFile == null && file('../release-signing.properties').exists()) {
@@ -226,26 +228,36 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    if (cdvReleaseSigningPropertiesFile) {
+   // if (cdvReleaseSigningPropertiesFile) {
         signingConfigs {
             release {
                 // These must be set or Gradle will complain (even if they are overridden).
-                keyAlias = ""
-                keyPassword = "__unset" // And these must be set to non-empty in order to have the signing step added to the task graph.
-                storeFile = null
-                storePassword = "__unset"
+                    storeFile file(RELEASE_STORE_FILE)
+                    storePassword RELEASE_STORE_PASSWORD
+                    keyAlias RELEASE_KEY_ALIAS
+                    keyPassword RELEASE_KEY_PASSWORD
+            }
+
+            debug {
+
+
+
             }
         }
+        
         buildTypes {
             release {
                 signingConfig signingConfigs.release
             }
-        }
-        addSigningProps(cdvReleaseSigningPropertiesFile, signingConfigs.release)
+            debug {
+                signingConfig signingConfigs.release
+            }
     }
-    if (cdvDebugSigningPropertiesFile) {
-        addSigningProps(cdvDebugSigningPropertiesFile, signingConfigs.debug)
-    }
+       // addSigningProps(cdvReleaseSigningPropertiesFile, signingConfigs.release)
+    //}
+   // if (cdvDebugSigningPropertiesFile) {
+   //     addSigningProps(cdvReleaseSigningPropertiesFile, signingConfigs.release)
+    //}
 }
 
 /*
@@ -297,19 +309,28 @@ def addSigningProps(propsFilePath, signingConfig) {
         throw new FileNotFoundException('Keystore file does not exist: ' + storeFile.getAbsolutePath())
     }
     signingConfig.keyAlias = props.get('key.alias') ?: privateHelpers.ensureValueExists(propsFilePath, props, 'keyAlias')
+    println( signingConfig.keyAlias)
     signingConfig.keyPassword = props.get('keyPassword', props.get('key.alias.password', signingConfig.keyPassword))
+    println(signingConfig.keyPassword )
     signingConfig.storeFile = storeFile
+    println(storeFile)
     signingConfig.storePassword = props.get('storePassword', props.get('key.store.password', signingConfig.storePassword))
+    println( signingConfig.storePassword )
+
     def storeType = props.get('storeType', props.get('key.store.type', ''))
+
     if (!storeType) {
         def filename = storeFile.getName().toLowerCase();
         if (filename.endsWith('.p12') || filename.endsWith('.pfx')) {
             storeType = 'pkcs12'
         } else {
             storeType = signingConfig.storeType // "jks"
+            println(storeType)
+
         }
     }
     signingConfig.storeType = storeType
+    println(storeType)
 }
 
 for (def func : cdvPluginPostBuildExtras) {

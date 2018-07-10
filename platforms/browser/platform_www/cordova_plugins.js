@@ -1,6 +1,14 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
+        "file": "plugins/cordova-plugin-ardic/www/CordovaAfexService.js",
+        "id": "cordova-plugin-ardic.CordovaAfexService",
+        "pluginId": "cordova-plugin-ardic",
+        "clobbers": [
+            "CordovaAfexService"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-ardic/www/file/DirectoryEntry.js",
         "id": "cordova-plugin-ardic.DirectoryEntry",
         "pluginId": "cordova-plugin-ardic",
@@ -149,7 +157,7 @@ module.exports.metadata =
 // TOP OF METADATA
 {
     "cordova-plugin-whitelist": "1.3.3",
-    "cordova-plugin-ardic": "1.0.5"
+    "cordova-plugin-ardic": "1.0.12"
 }
 // BOTTOM OF METADATA
 });

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="4" by="lint 3.0.0">
+<issues format="4" by="lint 3.0.1">
 
     <issue
         id="InlinedApi"
@@ -13,7 +13,7 @@
         errorLine2="                                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         quickfix="studio">
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/java/com/ardic/android/cordova/plugin/file/ContentFilesystem.java"
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/java/com/ardic/android/cordova/plugin/file/ContentFilesystem.java"
             line="196"
             column="49"/>
     </issue>
@@ -32,7 +32,7 @@
         errorLine2="                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         quickfix="studio">
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/AndroidManifest.xml"
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml"
             line="13"
             column="42"/>
     </issue>
@@ -50,7 +50,7 @@
         errorLine1="       persistentRoot = &quot;/data/data/&quot; + packageName;"
         errorLine2="                        ~~~~~~~~~~~~~">
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/java/com/ardic/android/cordova/plugin/file/FileUtils.java"
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/java/com/ardic/android/cordova/plugin/file/FileUtils.java"
             line="204"
             column="25"/>
     </issue>
@@ -66,7 +66,7 @@
         errorLine1="    &lt;uses-sdk android:minSdkVersion=&quot;16&quot; android:targetSdkVersion=&quot;26&quot; />"
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/AndroidManifest.xml"
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml"
             line="13"
             column="5"/>
     </issue>
@@ -83,7 +83,7 @@
         errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         quickfix="studio">
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/build.gradle"
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/build.gradle"
             line="32"
             column="9"/>
     </issue>
@@ -99,7 +99,7 @@
         errorLine1="&lt;manifest android:hardwareAccelerated=&quot;true&quot; android:versionCode=&quot;10000&quot; android:versionName=&quot;1.0.0&quot; package=&quot;com.ardic.android.cordova.test.app&quot; xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;>"
         errorLine2="                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/AndroidManifest.xml"
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml"
             line="2"
             column="46"/>
     </issue>
@@ -118,7 +118,7 @@
         errorLine2="    ^"
         quickfix="studio">
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/AndroidManifest.xml"
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml"
             line="5"
             column="5"/>
     </issue>
@@ -137,7 +137,7 @@
         errorLine2="    ^"
         quickfix="studio">
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/AndroidManifest.xml"
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml"
             line="5"
             column="5"/>
     </issue>
@@ -154,7 +154,7 @@
         errorLine2="^"
         quickfix="studio">
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/xml/config.xml"
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/xml/config.xml"
             line="2"
             column="1"/>
     </issue>
@@ -169,43 +169,29 @@
         explanation="Unused resources make applications larger and slow down builds."
         quickfix="studio">
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/drawable-land-hdpi/screen.png"/>
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/drawable-land-hdpi/screen.png"/>
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/drawable-land-ldpi/screen.png"/>
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/drawable-land-ldpi/screen.png"/>
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/drawable-land-mdpi/screen.png"/>
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/drawable-land-mdpi/screen.png"/>
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/drawable-land-xhdpi/screen.png"/>
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/drawable-land-xhdpi/screen.png"/>
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/drawable-land-xxhdpi/screen.png"/>
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/drawable-land-xxhdpi/screen.png"/>
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/drawable-land-xxxhdpi/screen.png"/>
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/drawable-land-xxxhdpi/screen.png"/>
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/drawable-port-hdpi/screen.png"/>
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/drawable-port-hdpi/screen.png"/>
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/drawable-port-ldpi/screen.png"/>
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/drawable-port-ldpi/screen.png"/>
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/drawable-port-mdpi/screen.png"/>
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/drawable-port-mdpi/screen.png"/>
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/drawable-port-xhdpi/screen.png"/>
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/drawable-port-xhdpi/screen.png"/>
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/drawable-port-xxhdpi/screen.png"/>
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/drawable-port-xxhdpi/screen.png"/>
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/drawable-port-xxxhdpi/screen.png"/>
-    </issue>
-
-    <issue
-        id="IconLauncherShape"
-        severity="Warning"
-        message="Launcher icons should not fill every pixel of their square region; see the design guide for details"
-        category="Usability:Icons"
-        priority="6"
-        summary="The launcher icon shape should use a distinct silhouette"
-        explanation="According to the Android Design Guide (http://developer.android.com/design/style/iconography.html) your launcher icons should &quot;use a distinct silhouette&quot;, a &quot;three-dimensional, front view, with a slight perspective as if viewed from above, so that users perceive some depth.&quot;&#xA;&#xA;The unique silhouette implies that your launcher icon should not be a filled square."
-        url="http://developer.android.com/design/style/iconography.html"
-        urls="http://developer.android.com/design/style/iconography.html">
-        <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/mipmap-xxhdpi/icon.png"/>
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/drawable-port-xxxhdpi/screen.png"/>
     </issue>
 
     <issue
@@ -217,17 +203,17 @@
         summary="Icon density-independent size validation"
         explanation="Checks the all icons which are provided in multiple densities, all compute to roughly the same density-independent pixel (`dip`) size. This catches errors where images are either placed in the wrong folder, or icons are changed to new sizes but some folders are forgotten.">
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/drawable-land-ldpi/screen.png"/>
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/drawable-land-ldpi/screen.png"/>
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/drawable-land-mdpi/screen.png"/>
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/drawable-land-xxxhdpi/screen.png"/>
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/drawable-land-xxxhdpi/screen.png"/>
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/drawable-land-mdpi/screen.png"/>
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/drawable-land-xxhdpi/screen.png"/>
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/drawable-land-hdpi/screen.png"/>
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/drawable-land-hdpi/screen.png"/>
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/drawable-land-xxhdpi/screen.png"/>
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/res/drawable-land-xhdpi/screen.png"/>
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/res/drawable-land-xhdpi/screen.png"/>
     </issue>
 
     <issue
@@ -244,7 +230,7 @@
         errorLine2="    ^"
         quickfix="studio">
         <location
-            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/System9TestApplication/platforms/android/app/src/main/AndroidManifest.xml"
+            file="/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml"
             line="5"
             column="5"/>
     </issue>

@@ -9,6 +9,10 @@
         <param name="onload" value="true" />
     </feature>
     <allow-navigation href="cdvfile:*" />
+    <feature name="CordovaAfexService">
+        <param name="android-package" value="com.ardic.android.cordova.plugin.CordovaAfexService" />
+        <param name="onload" value="true" />
+    </feature>
     <name>Ardic Cordova Plugin API Demos</name>
     <description>
         A sample Apache Cordova application for Ardic Cordova Plugin API's.

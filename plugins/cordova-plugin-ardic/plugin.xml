@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-plugin-ardic" version="1.0.5">
+        id="cordova-plugin-ardic" version="1.0.12">
     <name>Ardic</name>
     <description>Ardic Android Plugin</description>
     <license>Apache 2.0</license>
@@ -11,6 +11,10 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <engines>
         <engine name="cordova-android" version=">=6.3.0" />
     </engines>
+
+    <js-module src="www/CordovaAfexService.js" name="CordovaAfexService">
+        <clobbers target="CordovaAfexService" />
+    </js-module>
 
     <js-module src="www/file/DirectoryEntry.js" name="DirectoryEntry">
         <clobbers target="window.DirectoryEntry" />
@@ -111,6 +115,16 @@ to config.xml in order for the application to find previously stored files.
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
         </config-file>
 
+         <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="CordovaAfexService">
+            <param name="android-package" value="com.ardic.android.cordova.plugin.CordovaAfexService"/>
+            <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/CordovaAfexService.java" target-dir="src/com/ardic/android/cordova/plugin/" />
+
+
         <source-file src="src/android/file/EncodingException.java" target-dir="src/com/ardic/android/cordova/plugin/file" />
         <source-file src="src/android/file/FileExistsException.java" target-dir="src/com/ardic/android/cordova/plugin/file" />
         <source-file src="src/android/file/InvalidModificationException.java" target-dir="src/com/ardic/android/cordova/plugin/file" />
@@ -124,6 +138,10 @@ to config.xml in order for the application to find previously stored files.
         <source-file src="src/android/file/ContentFilesystem.java" target-dir="src/com/ardic/android/cordova/plugin/file" />
         <source-file src="src/android/file/AssetFilesystem.java" target-dir="src/com/ardic/android/cordova/plugin/file" />
         <source-file src="src/android/file/PendingRequests.java" target-dir="src/com/ardic/android/cordova/plugin/file" />
+
+        <!-- Custom Ardic Libraries -->
+        <framework src="src/android/ardic-build.gradle" custom="true" type="gradleReference" />
+
 
         <!-- android specific file apis -->
         <js-module src="www/android/FileSystem.js" name="androidFileSystem">
