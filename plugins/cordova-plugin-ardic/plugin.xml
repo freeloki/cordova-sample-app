@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-plugin-ardic" version="1.0.12">
+        id="cordova-plugin-ardic" version="1.0.16">
     <name>Ardic</name>
     <description>Ardic Android Plugin</description>
     <license>Apache 2.0</license>
     <keywords>cordova,android,device,ardic</keywords>
     <repo> https://github.com/freeloki/cordova-plugin-system9.git </repo>
+
+     <dependency id="cordova-plugin-file" version=">=5.0.0" />
 
     <engines>
         <engine name="cordova-android" version=">=6.3.0" />
@@ -16,104 +18,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <clobbers target="CordovaAfexService" />
     </js-module>
 
-    <js-module src="www/file/DirectoryEntry.js" name="DirectoryEntry">
-        <clobbers target="window.DirectoryEntry" />
-    </js-module>
-
-    <js-module src="www/file/DirectoryReader.js" name="DirectoryReader">
-        <clobbers target="window.DirectoryReader" />
-    </js-module>
-
-    <js-module src="www/file/Entry.js" name="Entry">
-        <clobbers target="window.Entry" />
-    </js-module>
-
-    <js-module src="www/file/File.js" name="File">
-        <clobbers target="window.File" />
-    </js-module>
-
-    <js-module src="www/file/FileEntry.js" name="FileEntry">
-        <clobbers target="window.FileEntry" />
-    </js-module>
-
-    <js-module src="www/file/FileError.js" name="FileError">
-        <clobbers target="window.FileError" />
-    </js-module>
-
-    <js-module src="www/file/FileReader.js" name="FileReader">
-        <clobbers target="window.FileReader" />
-    </js-module>
-
-    <js-module src="www/file/FileSystem.js" name="FileSystem">
-        <clobbers target="window.FileSystem" />
-    </js-module>
-
-    <js-module src="www/file/FileUploadOptions.js" name="FileUploadOptions">
-        <clobbers target="window.FileUploadOptions" />
-    </js-module>
-
-    <js-module src="www/file/FileUploadResult.js" name="FileUploadResult">
-        <clobbers target="window.FileUploadResult" />
-    </js-module>
-
-    <js-module src="www/file/FileWriter.js" name="FileWriter">
-        <clobbers target="window.FileWriter" />
-    </js-module>
-
-    <js-module src="www/file/Flags.js" name="Flags">
-        <clobbers target="window.Flags" />
-    </js-module>
-
-    <js-module src="www/file/LocalFileSystem.js" name="LocalFileSystem">
-        <!-- Non-standards way -->
-        <clobbers target="window.LocalFileSystem" />
-        <!-- Standards-compliant way -->
-        <merges target="window" />
-    </js-module>
-
-    <js-module src="www/file/Metadata.js" name="Metadata">
-        <clobbers target="window.Metadata" />
-    </js-module>
-
-    <js-module src="www/file/ProgressEvent.js" name="ProgressEvent">
-        <clobbers target="window.ProgressEvent" />
-    </js-module>
-
-    <js-module src="www/file/fileSystems.js" name="fileSystems" />
-
-    <js-module src="www/file/requestFileSystem.js" name="requestFileSystem">
-        <clobbers target="window.requestFileSystem" />
-    </js-module>
-
-    <js-module src="www/file/resolveLocalFileSystemURI.js" name="resolveLocalFileSystemURI">
-        <merges target="window" />
-    </js-module>
-
-
     <!-- android -->
     <platform name="android">
-        <info>
-The Android Persistent storage location now defaults to "Internal". Please check this plugin's README to see if your application needs any changes in its config.xml.
-
-If this is a new application no changes are required.
-
-If this is an update to an existing application that did not specify an "AndroidPersistentFileLocation" you may need to add:
-
-      "&lt;preference name="AndroidPersistentFileLocation" value="Compatibility" /&gt;"
-
-to config.xml in order for the application to find previously stored files.
-        </info>
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="File" >
-                <param name="android-package" value="com.ardic.android.cordova.plugin.file.FileUtils"/>
-                <param name="onload" value="true" />
-            </feature>
-            <allow-navigation href="cdvfile:*" />
-        </config-file>
-
-        <config-file target="AndroidManifest.xml" parent="/*">
-            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-        </config-file>
 
          <config-file target="res/xml/config.xml" parent="/*">
             <feature name="CordovaAfexService">
@@ -124,35 +30,8 @@ to config.xml in order for the application to find previously stored files.
 
         <source-file src="src/android/CordovaAfexService.java" target-dir="src/com/ardic/android/cordova/plugin/" />
 
-
-        <source-file src="src/android/file/EncodingException.java" target-dir="src/com/ardic/android/cordova/plugin/file" />
-        <source-file src="src/android/file/FileExistsException.java" target-dir="src/com/ardic/android/cordova/plugin/file" />
-        <source-file src="src/android/file/InvalidModificationException.java" target-dir="src/com/ardic/android/cordova/plugin/file" />
-        <source-file src="src/android/file/NoModificationAllowedException.java" target-dir="src/com/ardic/android/cordova/plugin/file" />
-        <source-file src="src/android/file/TypeMismatchException.java" target-dir="src/com/ardic/android/cordova/plugin/file" />
-        <source-file src="src/android/file/FileUtils.java" target-dir="src/com/ardic/android/cordova/plugin/file" />
-        <source-file src="src/android/file/DirectoryManager.java" target-dir="src/com/ardic/android/cordova/plugin/file" />
-        <source-file src="src/android/file/LocalFilesystemURL.java" target-dir="src/com/ardic/android/cordova/plugin/file" />
-        <source-file src="src/android/file/Filesystem.java" target-dir="src/com/ardic/android//cordova/plugin/file" />
-        <source-file src="src/android/file/LocalFilesystem.java" target-dir="src/com/ardic/android/cordova/plugin/file" />
-        <source-file src="src/android/file/ContentFilesystem.java" target-dir="src/com/ardic/android/cordova/plugin/file" />
-        <source-file src="src/android/file/AssetFilesystem.java" target-dir="src/com/ardic/android/cordova/plugin/file" />
-        <source-file src="src/android/file/PendingRequests.java" target-dir="src/com/ardic/android/cordova/plugin/file" />
-
         <!-- Custom Ardic Libraries -->
         <framework src="src/android/ardic-build.gradle" custom="true" type="gradleReference" />
 
-
-        <!-- android specific file apis -->
-        <js-module src="www/android/FileSystem.js" name="androidFileSystem">
-            <merges target="FileSystem" />
-        </js-module>
-        <js-module src="www/file/fileSystems-roots.js" name="fileSystems-roots">
-            <runs/>
-        </js-module>
-        <js-module src="www/file/fileSystemPaths.js" name="fileSystemPaths">
-            <merges target="cordova" />
-            <runs/>
-        </js-module>
     </platform>
 </plugin>

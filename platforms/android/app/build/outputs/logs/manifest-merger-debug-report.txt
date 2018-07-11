@@ -1,18 +1,18 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:2:1-15:12
-INJECTED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:2:1-15:12
-INJECTED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:2:1-15:12
-INJECTED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:2:1-15:12
-MERGED from [com.ardic.android:libafexmanager-full:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexmanager-full-1.0.0.aar/8508005df77b0cea33b2e634f344bba3/AndroidManifest.xml:2:1-5:12
+ADDED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:2:1-16:12
+INJECTED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:2:1-16:12
+INJECTED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:2:1-16:12
+INJECTED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:2:1-16:12
+MERGED from [com.ardic.android:libafexmanager-full:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexmanager-full-1.0.0.aar/72e425a904a65112a2fc5bc343953f8d/AndroidManifest.xml:2:1-5:12
 MERGED from [:CordovaLib] /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:20:1-27:12
-MERGED from [com.ardic.android:libafexlegacy-kitkat:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-kitkat-1.0.0.aar/7e7059ebacc9e128677250ca4228275e/AndroidManifest.xml:2:1-5:12
-MERGED from [com.ardic.android:libafexlegacy-jellybeanmr1:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-jellybeanmr1-1.0.0.aar/b974b036ac18adb513e99ea927aee3c9/AndroidManifest.xml:2:1-5:12
-MERGED from [com.ardic.android:libafexlegacy-LOLLIPOP-21:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-LOLLIPOP-21-1.0.0.aar/2181659ef55f88448146cd8e452f13fd/AndroidManifest.xml:2:1-5:12
-MERGED from [com.ardic.android:libafexlegacy-LOLLIPOP-22:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-LOLLIPOP-22-1.0.0.aar/f0812968a5223f4afffc8dc506e28825/AndroidManifest.xml:2:1-5:12
-INJECTED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:2:1-15:12
-INJECTED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:2:1-15:12
-INJECTED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:2:1-15:12
+MERGED from [com.ardic.android:libafexlegacy-kitkat:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-kitkat-1.0.0.aar/d39c48d76c62e99e53f80d0b15395d2f/AndroidManifest.xml:2:1-5:12
+MERGED from [com.ardic.android:libafexlegacy-jellybeanmr1:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-jellybeanmr1-1.0.0.aar/2c07605bbb1345dadb4dd0bf82e6b573/AndroidManifest.xml:2:1-5:12
+MERGED from [com.ardic.android:libafexlegacy-LOLLIPOP-21:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-LOLLIPOP-21-1.0.0.aar/1a66dd1676c4e21e1af6e2eb883d3dd9/AndroidManifest.xml:2:1-5:12
+MERGED from [com.ardic.android:libafexlegacy-LOLLIPOP-22:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-LOLLIPOP-22-1.0.0.aar/fc58536bcf4e065b7e17b6a7b5ecd12b/AndroidManifest.xml:2:1-5:12
+INJECTED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:2:1-16:12
+INJECTED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:2:1-16:12
+INJECTED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:2:1-16:12
 	package
 		ADDED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:2:102-146
 		INJECTED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml
@@ -85,18 +85,18 @@ ADDED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sam
 		ADDED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:9:27-74
 uses-sdk
 ADDED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:13:5-74
-MERGED from [com.ardic.android:libafexmanager-full:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexmanager-full-1.0.0.aar/8508005df77b0cea33b2e634f344bba3/AndroidManifest.xml:4:5-43
-MERGED from [com.ardic.android:libafexmanager-full:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexmanager-full-1.0.0.aar/8508005df77b0cea33b2e634f344bba3/AndroidManifest.xml:4:5-43
+MERGED from [com.ardic.android:libafexmanager-full:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexmanager-full-1.0.0.aar/72e425a904a65112a2fc5bc343953f8d/AndroidManifest.xml:4:5-43
+MERGED from [com.ardic.android:libafexmanager-full:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexmanager-full-1.0.0.aar/72e425a904a65112a2fc5bc343953f8d/AndroidManifest.xml:4:5-43
 MERGED from [:CordovaLib] /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:25:5-44
 MERGED from [:CordovaLib] /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:25:5-44
-MERGED from [com.ardic.android:libafexlegacy-kitkat:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-kitkat-1.0.0.aar/7e7059ebacc9e128677250ca4228275e/AndroidManifest.xml:4:5-43
-MERGED from [com.ardic.android:libafexlegacy-kitkat:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-kitkat-1.0.0.aar/7e7059ebacc9e128677250ca4228275e/AndroidManifest.xml:4:5-43
-MERGED from [com.ardic.android:libafexlegacy-jellybeanmr1:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-jellybeanmr1-1.0.0.aar/b974b036ac18adb513e99ea927aee3c9/AndroidManifest.xml:4:5-43
-MERGED from [com.ardic.android:libafexlegacy-jellybeanmr1:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-jellybeanmr1-1.0.0.aar/b974b036ac18adb513e99ea927aee3c9/AndroidManifest.xml:4:5-43
-MERGED from [com.ardic.android:libafexlegacy-LOLLIPOP-21:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-LOLLIPOP-21-1.0.0.aar/2181659ef55f88448146cd8e452f13fd/AndroidManifest.xml:4:5-43
-MERGED from [com.ardic.android:libafexlegacy-LOLLIPOP-21:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-LOLLIPOP-21-1.0.0.aar/2181659ef55f88448146cd8e452f13fd/AndroidManifest.xml:4:5-43
-MERGED from [com.ardic.android:libafexlegacy-LOLLIPOP-22:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-LOLLIPOP-22-1.0.0.aar/f0812968a5223f4afffc8dc506e28825/AndroidManifest.xml:4:5-43
-MERGED from [com.ardic.android:libafexlegacy-LOLLIPOP-22:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-LOLLIPOP-22-1.0.0.aar/f0812968a5223f4afffc8dc506e28825/AndroidManifest.xml:4:5-43
+MERGED from [com.ardic.android:libafexlegacy-kitkat:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-kitkat-1.0.0.aar/d39c48d76c62e99e53f80d0b15395d2f/AndroidManifest.xml:4:5-43
+MERGED from [com.ardic.android:libafexlegacy-kitkat:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-kitkat-1.0.0.aar/d39c48d76c62e99e53f80d0b15395d2f/AndroidManifest.xml:4:5-43
+MERGED from [com.ardic.android:libafexlegacy-jellybeanmr1:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-jellybeanmr1-1.0.0.aar/2c07605bbb1345dadb4dd0bf82e6b573/AndroidManifest.xml:4:5-43
+MERGED from [com.ardic.android:libafexlegacy-jellybeanmr1:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-jellybeanmr1-1.0.0.aar/2c07605bbb1345dadb4dd0bf82e6b573/AndroidManifest.xml:4:5-43
+MERGED from [com.ardic.android:libafexlegacy-LOLLIPOP-21:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-LOLLIPOP-21-1.0.0.aar/1a66dd1676c4e21e1af6e2eb883d3dd9/AndroidManifest.xml:4:5-43
+MERGED from [com.ardic.android:libafexlegacy-LOLLIPOP-21:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-LOLLIPOP-21-1.0.0.aar/1a66dd1676c4e21e1af6e2eb883d3dd9/AndroidManifest.xml:4:5-43
+MERGED from [com.ardic.android:libafexlegacy-LOLLIPOP-22:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-LOLLIPOP-22-1.0.0.aar/fc58536bcf4e065b7e17b6a7b5ecd12b/AndroidManifest.xml:4:5-43
+MERGED from [com.ardic.android:libafexlegacy-LOLLIPOP-22:1.0.0] /home/yavuz.erzurumlu/.gradle/caches/transforms-1/files-1.1/libafexlegacy-LOLLIPOP-22-1.0.0.aar/fc58536bcf4e065b7e17b6a7b5ecd12b/AndroidManifest.xml:4:5-43
 	android:targetSdkVersion
 		ADDED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:13:42-71
 	android:minSdkVersion
@@ -105,3 +105,7 @@ uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:14:5-81
 	android:name
 		ADDED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:14:22-78
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:15:5-79
+	android:name
+		ADDED from /home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/platforms/android/app/src/main/AndroidManifest.xml:15:22-76

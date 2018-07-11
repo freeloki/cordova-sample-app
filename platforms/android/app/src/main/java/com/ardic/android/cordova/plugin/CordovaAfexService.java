@@ -18,9 +18,11 @@ import com.ardic.android.managers.devicestatus.DeviceStatusManager;
 import com.ardic.android.managers.devicestatus.IDeviceStatusManager;
 import com.ardic.android.managers.systemconfig.ISystemConfigManager;
 import com.ardic.android.managers.systemconfig.SystemConfigManager;
-import com.sun.org.apache.xerces.internal.impl.xpath.XPath.Step;
+import com.ardic.android.managers.appinstall.IAppInstallManager;
+import com.ardic.android.managers.appinstall.AppInstallManager;
 
 import java.util.Calendar;
+import java.io.File;
 
 import com.ardic.android.exceptions.AfexException;
 
@@ -67,6 +69,9 @@ public class CordovaAfexService extends CordovaPlugin {
         } else if("getStreamVolumeLevel".equals(action)) {
             int streamType = args.getInt(0);
             this.getStreamVolumeLevel(streamType, callbackContext);
+        } else if("installApplication".equals(action)){
+            String apkPath = args.getString(0);
+            this.installApplication(apkPath, callbackContext);
         }
         return false;
     }
@@ -370,6 +375,28 @@ public class CordovaAfexService extends CordovaPlugin {
             }
         }
         callbackContext.error("Error Occured Please Try Again.");
+    }
+
+    private void installApplication(String apkPath, CallbackContext callbackContext) {
+
+        try {
+            IAppInstallManager appInstallManager = AppInstallManager.getInterface(webView.getContext());
+
+            if(appInstallManager != null && !TextUtils.isEmpty(apkPath) && new File(apkPath).exists()) {
+
+                int result = appInstallManager.install(apkPath, IAppInstallManager.INSTALL_REPLACE_EXISTING);
+
+                if(result == IAppInstallManager.INSTALL_SUCCEEDED) {
+                    callbackContext.success("Installation successfull : " + result);
+                } else {
+                    callbackContext.error("Installation failure with code:  " + result);
+                }
+                return;
+            }
+        } catch (AfexException e) {
+            callbackContext.error(e.toString());
+        }
+        callbackContext.error("Unknown error occured. Please be sure your apk exists on the given path.");
     }
 
     private int getStreamType(int streamType) {

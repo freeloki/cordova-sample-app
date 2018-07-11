@@ -63,7 +63,8 @@ var app = {
     document.getElementById('setDate').addEventListener('click', this.setDate)
     document.getElementById('setAutoDateTime').addEventListener('click', this.setAutoDateTime)
     document.getElementById('muteSound').addEventListener('click', this.muteSound)
-    document.getElementById('getStreamVolumeLevel').addEventListener('click', this.getStreamVolumeLevel);
+    document.getElementById('getStreamVolumeLevel').addEventListener('click', this.getStreamVolumeLevel)
+    document.getElementById('downloadAndInstallApk').addEventListener('click', this.downloadAndInstallApk)
     document.getElementById('getFileSystem').addEventListener('click', this.getFileSystemEvent)
     document.getElementById('createFile').addEventListener('click', this.createFile)
     document.getElementById('deleteFile').addEventListener('click', this.deleteFile)
@@ -72,6 +73,9 @@ var app = {
     document.getElementById('removeDir').addEventListener('click', this.removeDir)
     document.getElementById('moveFile').addEventListener('click', this.moveFile)
     document.getElementById('listFiles').addEventListener('click', this.listFiles)
+
+
+    
 
   },
 
@@ -92,11 +96,32 @@ var app = {
 
   getFileSystemEvent: function () {
 
-    var applicationStorageDir = document.getElementById('selectCordovaDir').value
+    //var applicationStorageDir = document.getElementById('selectCordovaDir').value
 
     console.log('Get Fs clicked')
-    console.log(applicationStorageDir)
-    console.log(cordova.file)
+    //console.log(applicationStorageDir)
+    //console.log(cordova.file)
+
+
+    document.addEventListener("DOWNLOADER_downloadSuccess", function(event) {
+      console.log(JSON.stringify(event))
+     // console.log("File Entry: " + event.file);
+
+      CordovaAfexService.installApplication(event.file, function (successCallback) {
+        console.log(successCallback);
+      }, function (errorCallback){
+        console.log(errorCallback)
+      })
+    });
+
+    document.addEventListener("DOWNLOADER_downloadError", function(event) {
+      console.log(JSON.stringify(event))
+
+    });
+
+    document.addEventListener("DOWNLOADER_downloadProgress", function(event) {
+     // console.log(JSON.stringify(event))
+    });
 
 
   },
@@ -437,6 +462,53 @@ var app = {
     }, function (errorCallback) {
       alert("Error Occured:\n " + errorCallback)
     })
+
+  },
+
+  downloadAndInstallApk: function () {
+
+    console.log('downloadAndInstallApk btn clicked')
+
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+      console.log('file system open: ' + fs.name);
+      fs.root.getFile('bot.png', { create: true, exclusive: false }, function (fileEntry) {
+          console.log('fileEntry is file? ' + fileEntry.isFile.toString());
+          var oReq = new XMLHttpRequest();
+          // Make sure you add the domain name to the Content-Security-Policy <meta> element.
+          oReq.open("GET", "http://cordova.apache.org/static/img/cordova_bot.png", true);
+          // Define how you want the XHR data to come back
+          oReq.responseType = "blob";
+          oReq.onload = function (oEvent) {
+              var blob = oReq.response; // Note: not oReq.responseText
+              if (blob) {
+
+                console.log(JSON.stringify(blob))
+                  // Create a URL based on the blob, and set an <img> tag's src to it.
+                  //var url = window.URL.createObjectURL(blob);
+                 // document.getElementById('bot-img').src = url;
+                  // Or read the data with a FileReader
+                  var reader = new FileReader();
+                  reader.addEventListener("onloadend", function() {
+                  // reader.result contains the contents of blob as text
+                  console.log("Awesome2")
+                  });
+                 // reader.readAsText(blob);
+              } else console.error('we didnt get an XHR response!');
+          };
+
+          oReq.onloadend = function (oEvent) {
+            console.log("Awesome")
+          }
+          oReq.send(null);
+      }, function (err) { console.error('error getting file! ' + err); });
+  }, function (err) { console.error('error getting persistent fs! ' + err); });
+  
+
+    /*CordovaAfexService.installApplication("/storage/emulated/0/apks/IoTIgniteDemoApp-AR.IGDA.0.8.12-20161215-R.apk", function (successCallback) {
+      console.log(successCallback);
+    }, function (errorCallback){
+      console.log(errorCallback)
+    })*/
 
   }
 }

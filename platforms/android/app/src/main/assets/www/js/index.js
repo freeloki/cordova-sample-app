@@ -63,7 +63,8 @@ var app = {
     document.getElementById('setDate').addEventListener('click', this.setDate)
     document.getElementById('setAutoDateTime').addEventListener('click', this.setAutoDateTime)
     document.getElementById('muteSound').addEventListener('click', this.muteSound)
-    document.getElementById('getStreamVolumeLevel').addEventListener('click', this.getStreamVolumeLevel);
+    document.getElementById('getStreamVolumeLevel').addEventListener('click', this.getStreamVolumeLevel)
+    document.getElementById('downloadAndInstallApk').addEventListener('click', this.downloadAndInstallApk)
     document.getElementById('getFileSystem').addEventListener('click', this.getFileSystemEvent)
     document.getElementById('createFile').addEventListener('click', this.createFile)
     document.getElementById('deleteFile').addEventListener('click', this.deleteFile)
@@ -73,6 +74,9 @@ var app = {
     document.getElementById('moveFile').addEventListener('click', this.moveFile)
     document.getElementById('listFiles').addEventListener('click', this.listFiles)
 
+
+    
+
   },
 
   // deviceready Event Handler
@@ -80,6 +84,8 @@ var app = {
   // Bind any cordova events here. Common events are:
   // 'pause', 'resume', etc.
   onDeviceReady: function () {
+
+    console.log("onDeviceReady")
     document.getElementById('selectCordovaDir').innerHTML += '<option value="' + cordova.file.externalApplicationStorageDirectory + '">External App Storage Directory</option>'
     document.getElementById('selectCordovaDir').innerHTML += '<option value="' + cordova.file.externalCacheDirectory + '">External App Cache Directory</option>'
     document.getElementById('selectCordovaDir').innerHTML += '<option value="' + cordova.file.externalDataDirectory + '">External Application Data Directory</option>'
@@ -96,9 +102,7 @@ var app = {
 
     console.log('Get Fs clicked')
     console.log(applicationStorageDir)
-    console.log(cordova.file)
-
-
+    //console.log(cordova.file)
   },
 
   writeFile: function (fileEntry, dataObj) {
@@ -437,6 +441,47 @@ var app = {
     }, function (errorCallback) {
       alert("Error Occured:\n " + errorCallback)
     })
+
+  },
+
+  downloadAndInstallApk: function () {
+
+    console.log('downloadAndInstallApk btn clicked')
+
+    downloader.init({folder: "testApps", fileSystem: cordova.file.externalRootDirectory});
+    downloader.get("https://download.iot-ignite.com/DemoApp/IoTIgniteDemoApp-AR.IGDA.0.8.12-20161215-R.apk");
+
+
+
+    document.addEventListener("DOWNLOADER_downloadSuccess", function(event) {
+     console.log(JSON.stringify(event))
+     console.log("File Entry: " + event.data[0].nativeURL);
+
+     var fullPath  =  event.data[0].nativeURL.substring(7);
+
+     console.log("New entry: " + fullPath)
+
+      CordovaAfexService.installApplication(fullPath, function (successCallback) {
+        console.log(successCallback);
+      }, function (errorCallback){
+        console.log(errorCallback)
+      })
+    });
+
+    document.addEventListener("DOWNLOADER_downloadError", function(event) {
+      console.log(JSON.stringify(event))
+
+    });
+
+    document.addEventListener("DOWNLOADER_downloadProgress", function(event) {
+      console.log(JSON.stringify(event))
+    });
+
+    /*CordovaAfexService.installApplication("/storage/emulated/0/apks/IoTIgniteDemoApp-AR.IGDA.0.8.12-20161215-R.apk", function (successCallback) {
+      console.log(successCallback);
+    }, function (errorCallback){
+      console.log(errorCallback)
+    })*/
 
   }
 }

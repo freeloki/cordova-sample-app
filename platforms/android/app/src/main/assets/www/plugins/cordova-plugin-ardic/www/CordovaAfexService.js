@@ -135,6 +135,16 @@ module.exports = {
      */
     getStreamVolumeLevel: function (streamType, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "CordovaAfexService", "getStreamVolumeLevel",[streamType]);
+    },
+
+    /**
+     * Silent install for given apk.
+     * @param {DOMString} apkPath Full path off apk
+     * @param {function} successCallback callback for installation success.
+     * @param {function} errorCallback callback for failure.     
+     */
+    installApplication: function (apkPath, successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "CordovaAfexService", "installApplication", [apkPath])
     }
 };
 });
