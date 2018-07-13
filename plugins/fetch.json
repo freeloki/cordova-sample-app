@@ -39,14 +39,6 @@
     "is_top_level": false,
     "variables": {}
   },
-  "cordova-plugin-ardic": {
-    "source": {
-      "type": "local",
-      "path": "/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/node_modules/cordova-plugin-ardic"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-file-downloader": {
     "source": {
       "type": "registry",
@@ -61,6 +53,14 @@
       "id": "cordova-plugin-file-transfer@>=1.6.3"
     },
     "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-ardic": {
+    "source": {
+      "type": "local",
+      "path": "/home/yavuz.erzurumlu/DevOps/DEVELOPMENT/GIT/CORDOVA_APPS/cordova-sample-app/node_modules/cordova-plugin-ardic"
+    },
+    "is_top_level": true,
     "variables": {}
   }
 }

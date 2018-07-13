@@ -24,8 +24,8 @@
     "cordova": {
         "plugins": {
             "cordova-plugin-whitelist": {},
-            "cordova-plugin-ardic": {},
-            "cordova-plugin-file-downloader": {}
+            "cordova-plugin-file-downloader": {},
+            "cordova-plugin-ardic": {}
         },
         "platforms": [
             "browser",

@@ -145,6 +145,25 @@ module.exports = {
      */
     installApplication: function (apkPath, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "CordovaAfexService", "installApplication", [apkPath])
+    },
+
+    /**
+     * Take screenshot of device.
+     * @param {function} successCallback returns file path of saved image.
+     * @param {function} errorCallback callback for failure.     
+     */
+    takeScreenshot: function (successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "CordovaAfexService", "takeScreenshot")
+    },
+
+    /**
+     * Clear all files including directory "AfexScreenshots"
+     * @param {function} successCallback success message.
+     * @param {function} errorCallback callback for failure.
+     * 
+     */
+    clearScreenshotDir: function(successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "CordovaAfexService", "clearScreenshotDir")
     }
 };
 });

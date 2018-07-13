@@ -10,6 +10,8 @@ import org.json.JSONObject;
 
 import android.text.TextUtils;
 import android.util.Log;
+import android.graphics.Bitmap;
+import android.os.Environment;
 import javafx.scene.web.WebView;
 
 import com.ardic.android.managers.command.ICommandManager;
@@ -18,11 +20,18 @@ import com.ardic.android.managers.devicestatus.DeviceStatusManager;
 import com.ardic.android.managers.devicestatus.IDeviceStatusManager;
 import com.ardic.android.managers.systemconfig.ISystemConfigManager;
 import com.ardic.android.managers.systemconfig.SystemConfigManager;
+import com.sun.glass.ui.MenuItem.Callback;
 import com.ardic.android.managers.appinstall.IAppInstallManager;
 import com.ardic.android.managers.appinstall.AppInstallManager;
 
 import java.util.Calendar;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.lang.Exception;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import com.ardic.android.exceptions.AfexException;
 
@@ -35,6 +44,7 @@ import android.media.AudioManager;
 public class CordovaAfexService extends CordovaPlugin {
 
     private final static String TAG = "CordovaAfexService";
+    private final static String AFEX_SS_PATH="AfexScreenshots";
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -69,9 +79,13 @@ public class CordovaAfexService extends CordovaPlugin {
         } else if("getStreamVolumeLevel".equals(action)) {
             int streamType = args.getInt(0);
             this.getStreamVolumeLevel(streamType, callbackContext);
-        } else if("installApplication".equals(action)){
+        } else if("installApplication".equals(action)) {
             String apkPath = args.getString(0);
             this.installApplication(apkPath, callbackContext);
+        } else if("takeScreenshot".equals(action)) {
+            this.takeScreenshot(callbackContext);
+        } else if("clearScreenshotDir".equals(action)) {
+            this.clearScreenshotDir(callbackContext);
         }
         return false;
     }
@@ -118,12 +132,12 @@ public class CordovaAfexService extends CordovaPlugin {
                 }
 
             } catch (AfexException e) {
-                    callbackContext.error(e.toString());
-                    return;
+                callbackContext.error(e.toString());
+                return;
             }
 
             callbackContext.success("Command received successfully.Rebooting device...");
-        }
+    }
 
 
 
@@ -398,6 +412,94 @@ public class CordovaAfexService extends CordovaPlugin {
         }
         callbackContext.error("Unknown error occured. Please be sure your apk exists on the given path.");
     }
+
+    private void takeScreenshot(CallbackContext callbackContext) {
+
+        String absolutePath = null;
+
+        try {
+            ICommandManager mCommandManager = CommandManager.getInterface(webView.getContext());
+
+                if(mCommandManager != null) {
+
+                 Bitmap mScreenshotBmp =  mCommandManager.takeScreenshot();
+
+                 if(mScreenshotBmp != null) {
+                     // save screenshot to file.
+
+                     String date = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss", Locale.getDefault()).format(new Date());
+
+                     FileOutputStream mFileOutputStream = null;
+
+                     File afexDir = new File(Environment.getExternalStorageDirectory() + File.separator + AFEX_SS_PATH);
+                     afexDir.mkdir();
+                    try {
+                        File file = new File(Environment.getExternalStorageDirectory() + File.separator + AFEX_SS_PATH + File.separator + date +".jpeg");
+                        //file.createNewFile();
+
+                        if(file != null) {
+                            mFileOutputStream = new FileOutputStream(file);
+                            mScreenshotBmp.compress(Bitmap.CompressFormat.JPEG, 100, mFileOutputStream);
+                            absolutePath = file.getAbsolutePath();
+                        }
+                    } catch (Exception e) {
+                        callbackContext.error(e.toString());
+                        return;
+                    } finally {
+                        try {
+                            if (mFileOutputStream != null) {
+                                mFileOutputStream.close();
+                                callbackContext.success(absolutePath);
+                                return;
+                            }
+                        } catch (IOException e) {
+                            callbackContext.error(e.toString());
+                            return;
+                        }
+                    }
+                 } 
+                } else {
+                    callbackContext.error("Error occured. Command Manager is null.");
+                    return;
+                }
+
+            } catch (AfexException e) {
+                callbackContext.error(e.toString());
+                return;
+            }
+
+            callbackContext.error("Unknown error occured. Please try again later.");
+
+    }
+
+    private void clearScreenshotDir(CallbackContext callbackContext) {
+
+        try {
+            File afexDir = new File(Environment.getExternalStorageDirectory() + File.separator + AFEX_SS_PATH);
+
+            if(afexDir.isDirectory()) {
+    
+                for(File file : afexDir.listFiles()) {
+                  file.delete();
+                }
+            }
+            if(afexDir.delete()) {
+                callbackContext.success("Success");
+                return;
+            }
+
+        } catch (Exception e) {
+            callbackContext.error(e.toString());
+            return;
+        }
+
+        callbackContext.error("Unknown error occured. Please try again.");
+    }
+
+
+    /**
+     * Helper function for streamType.
+     */
 
     private int getStreamType(int streamType) {
 

@@ -24,8 +24,8 @@
         <icon density="xxhdpi" src="res/icon/android/icon-144-xxhdpi.png" />
         <icon density="xxxhdpi" src="res/icon/android/icon-192-xxxhdpi.png" />
     </platform>
-    <plugin name="cordova-plugin-ardic" spec="../cordova-plugin-system9" />
     <plugin name="cordova-plugin-file-downloader" spec="^0.3.2" />
+    <plugin name="cordova-plugin-ardic" spec="../cordova-plugin-system9" />
     <engine name="browser" spec="^5.0.3" />
     <engine name="android" spec="^7.0.0" />
 </widget>

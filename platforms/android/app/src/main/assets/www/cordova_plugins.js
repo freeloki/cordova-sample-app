@@ -174,14 +174,6 @@ module.exports = [
     "runs": true
   },
   {
-    "id": "cordova-plugin-ardic.CordovaAfexService",
-    "file": "plugins/cordova-plugin-ardic/www/CordovaAfexService.js",
-    "pluginId": "cordova-plugin-ardic",
-    "clobbers": [
-      "CordovaAfexService"
-    ]
-  },
-  {
     "id": "cordova-plugin-file-transfer.FileTransferError",
     "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
     "pluginId": "cordova-plugin-file-transfer",
@@ -237,6 +229,14 @@ module.exports = [
     "clobbers": [
       "downloader"
     ]
+  },
+  {
+    "id": "cordova-plugin-ardic.CordovaAfexService",
+    "file": "plugins/cordova-plugin-ardic/www/CordovaAfexService.js",
+    "pluginId": "cordova-plugin-ardic",
+    "clobbers": [
+      "CordovaAfexService"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -244,12 +244,12 @@ module.exports.metadata =
 {
   "cordova-plugin-whitelist": "1.3.3",
   "cordova-plugin-file": "6.0.1",
-  "cordova-plugin-ardic": "1.0.16",
   "cordova-plugin-file-transfer": "1.7.1",
   "cordova-plugin-network-information": "2.0.1",
   "cordova-plugin-zip": "3.1.0",
   "cordova-plugin-file-md5": "0.3.3",
-  "cordova-plugin-file-downloader": "0.3.2"
+  "cordova-plugin-file-downloader": "0.3.2",
+  "cordova-plugin-ardic": "1.0.17"
 };
 // BOTTOM OF METADATA
 });

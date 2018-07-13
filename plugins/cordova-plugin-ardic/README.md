@@ -22,12 +22,12 @@ cordova add cordova-plugin-ardic
 - [Set Auto Date Time](#set-auto-date-time)
 - [Set Muted](#set-muted)
 - [Get Stream Volume Level](#get-stream-volume-level)
+- [Install Application](#install-application)
 
 ## Usage
 
 ### File API's
-This plugin uses the [Cordova File Plugin](https://github.com/apache/cordova-plugin-file) as is. You can check documentation for file API's from [here](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-file/index.html). You don't have to install file plugin. This plugin includes the file plugin itself.
-
+This plugin uses the [Cordova File Plugin](https://github.com/apache/cordova-plugin-file) as is. You can check documentation for file API's from [here](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-file/index.html). You don't have to install file plugin separately.
 
 ### AFEX API's
 
@@ -164,7 +164,7 @@ CordovaAfexService.setTimeZone("Europe/Athens", function (newTimeZone) {
 
 #### Set Date
 
-Sets device date.**Only sets year,month and day.**
+Sets device date. **Only sets year,month and day.**
 
 ```javascript
 /**
@@ -195,7 +195,7 @@ CordovaAfexService.setDate(epochTime, function (responseDate) {
 
 #### Set Time
 
-Sets device time. **Only hours and minutes.**
+Sets device time. **Only sets hours and minutes.**
 
 ```javascript
 /**
@@ -265,7 +265,7 @@ Mute/unmute device sound.
 - STREAM_DTMF = 8
 - STREAM_ACCESSIBILITY = 10
 
-For more info about android audio manager you can check [here.](https://developer.android.com/reference/android/media/AudioManager)
+For more info about Android audio manager you can check [here.](https://developer.android.com/reference/android/media/AudioManager)
 
  ```javascript
  /**
@@ -289,7 +289,7 @@ setMuted: function (streamType, isMute, successCallback, errorCallback) {
 
 ##### Sample Usage:
 
-if __*isMute*__ is true mutes selected stream otherwise unmutes the stream.
+if __*isMute*__ is true, mutes selected stream. Otherwise unmutes the selected stream.
 
 ```javascript
 var STREAM_MUSIC = 3 // mutes stream. isMute=false
@@ -331,6 +331,32 @@ CordovaAfexService.getStreamVolumeLevel(streamType, function (volume) {
   alert("Volume: " + volume)
 }, function (errorCallback) {
   alert("Error Occured:\n " + errorCallback)
+})
+```
+
+#### Install Application
+Installs application from a valid file path.
+
+```javascript
+/**
+ * Silent install for given apk.
+ * @param {DOMString} apkPath Full path off apk
+ * @param {function} successCallback callback for installation success.
+ * @param {function} errorCallback callback for failure.     
+ */
+installApplication: function (apkPath, successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, "CordovaAfexService", "installApplication", [apkPath])
+}
+```
+
+##### Sample Usage:
+
+```javascript
+fullPath ="/storage/emulated/0/testApps/MySampleAndroidApp.apk"
+CordovaAfexService.installApplication(fullPath, function (successCallback) {
+  console.log(successCallback);
+}, function (errorCallback){
+  console.log(errorCallback)
 })
 ```
 

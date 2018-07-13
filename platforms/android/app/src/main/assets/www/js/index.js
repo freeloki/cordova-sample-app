@@ -65,6 +65,8 @@ var app = {
     document.getElementById('muteSound').addEventListener('click', this.muteSound)
     document.getElementById('getStreamVolumeLevel').addEventListener('click', this.getStreamVolumeLevel)
     document.getElementById('downloadAndInstallApk').addEventListener('click', this.downloadAndInstallApk)
+    document.getElementById('takeScreenshot').addEventListener('click', this.takeScreenshot)
+    document.getElementById('clearScreenshotDir').addEventListener('click', this.clearScreenshotDir)
     document.getElementById('getFileSystem').addEventListener('click', this.getFileSystemEvent)
     document.getElementById('createFile').addEventListener('click', this.createFile)
     document.getElementById('deleteFile').addEventListener('click', this.deleteFile)
@@ -73,10 +75,6 @@ var app = {
     document.getElementById('removeDir').addEventListener('click', this.removeDir)
     document.getElementById('moveFile').addEventListener('click', this.moveFile)
     document.getElementById('listFiles').addEventListener('click', this.listFiles)
-
-
-    
-
   },
 
   // deviceready Event Handler
@@ -476,13 +474,26 @@ var app = {
     document.addEventListener("DOWNLOADER_downloadProgress", function(event) {
       console.log(JSON.stringify(event))
     });
+  },
 
-    /*CordovaAfexService.installApplication("/storage/emulated/0/apks/IoTIgniteDemoApp-AR.IGDA.0.8.12-20161215-R.apk", function (successCallback) {
+  takeScreenshot: function () {
+    console.log('takeScreenshot btn clicked')
+
+    CordovaAfexService.takeScreenshot(function (successCallback) {
       console.log(successCallback);
     }, function (errorCallback){
       console.log(errorCallback)
-    })*/
+    })    
 
+  },
+
+  clearScreenshotDir: function () {
+    console.log('clearScreenshotDir btn clicked')
+    CordovaAfexService.clearScreenshotDir(function (successCallback) {
+      console.log(successCallback);
+    }, function (errorCallback){
+      console.log(errorCallback)
+    }) 
   }
 }
 
