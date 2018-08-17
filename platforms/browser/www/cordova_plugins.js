@@ -269,7 +269,7 @@ module.exports.metadata =
     "cordova-plugin-zip": "3.1.0",
     "cordova-plugin-file-md5": "0.3.3",
     "cordova-plugin-file-downloader": "0.3.2",
-    "cordova-plugin-ardic": "1.0.17"
+    "cordova-plugin-ardic": "1.0.26"
 }
 // BOTTOM OF METADATA
 });

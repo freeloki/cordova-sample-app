@@ -20,7 +20,8 @@ import com.ardic.android.managers.devicestatus.DeviceStatusManager;
 import com.ardic.android.managers.devicestatus.IDeviceStatusManager;
 import com.ardic.android.managers.systemconfig.ISystemConfigManager;
 import com.ardic.android.managers.systemconfig.SystemConfigManager;
-import com.sun.glass.ui.MenuItem.Callback;
+import com.ardic.android.managers.afexadmin.AfexAdminManager;
+import com.ardic.android.managers.afexadmin.IAfexAdminManager;
 import com.ardic.android.managers.appinstall.IAppInstallManager;
 import com.ardic.android.managers.appinstall.AppInstallManager;
 
@@ -36,7 +37,10 @@ import java.util.Locale;
 import com.ardic.android.exceptions.AfexException;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.PackageManager;
 
 /**
  * This class echoes a string called from JavaScript.
@@ -86,6 +90,14 @@ public class CordovaAfexService extends CordovaPlugin {
             this.takeScreenshot(callbackContext);
         } else if("clearScreenshotDir".equals(action)) {
             this.clearScreenshotDir(callbackContext);
+        } else if("readOtherAppsSharedPref".equals(action)) {
+            String pkgName = args.getString(0);
+            String name = args.getString(1);
+            String fileName = args.getString(2);
+            this.readOtherAppsSharedPref(pkgName, name, fileName, callbackContext);
+        } else if("setScreenlock".equals(action)) {
+            boolean lock = args.getBoolean(0);
+            this.setScreenlock(lock, callbackContext);
         }
         return false;
     }
@@ -431,11 +443,11 @@ public class CordovaAfexService extends CordovaPlugin {
 
                      FileOutputStream mFileOutputStream = null;
 
-                     File afexDir = new File(Environment.getExternalStorageDirectory() + File.separator + AFEX_SS_PATH);
+
+                     File afexDir = new File(webView.getContext().getFilesDir() + File.separator + AFEX_SS_PATH);
                      afexDir.mkdir();
                     try {
-                        File file = new File(Environment.getExternalStorageDirectory() + File.separator + AFEX_SS_PATH + File.separator + date +".jpeg");
-                        //file.createNewFile();
+                        File file = new File(webView.getContext().getFilesDir() + File.separator + AFEX_SS_PATH + File.separator + date +".jpeg");
 
                         if(file != null) {
                             mFileOutputStream = new FileOutputStream(file);
@@ -475,7 +487,7 @@ public class CordovaAfexService extends CordovaPlugin {
     private void clearScreenshotDir(CallbackContext callbackContext) {
 
         try {
-            File afexDir = new File(Environment.getExternalStorageDirectory() + File.separator + AFEX_SS_PATH);
+            File afexDir = new File(webView.getContext().getFilesDir() + File.separator + AFEX_SS_PATH);
 
             if(afexDir.isDirectory()) {
     
@@ -494,6 +506,60 @@ public class CordovaAfexService extends CordovaPlugin {
         }
 
         callbackContext.error("Unknown error occured. Please try again.");
+    }
+
+    private void readOtherAppsSharedPref(String packageName, String name, String fileName, CallbackContext callbackContext) {
+
+        Log.i(TAG, "PackageName: " + packageName);
+        Log.i(TAG, "Name: " + name);
+        Log.i(TAG, "PrefName: " + fileName);
+
+        if(!TextUtils.isEmpty(packageName) && !TextUtils.isEmpty(name) && !TextUtils.isEmpty(fileName)) {
+
+            try {
+                Context context = webView.getContext().createPackageContext(packageName, 0);
+                SharedPreferences pref = context.getSharedPreferences(name, Context.MODE_PRIVATE);
+
+                Log.i(TAG, "Pref: " + pref);
+
+                String data = pref.getString(fileName, "");
+
+                if(!TextUtils.isEmpty(data)) {
+                    callbackContext.success(data);
+                } else {
+                    callbackContext.error("Invalid Package");
+                }
+
+                Log.i(TAG, "Data: \n " + data);
+
+                }  catch (NameNotFoundException e) {
+                    Log.e(TAG,"Name not found!!!" + e);
+                }
+        }
+
+    }
+
+    private void setScreenlock(boolean lock, CallbackContext callbackContext) {
+
+        try {
+            if(lock) {
+                IAfexAdminManager mAfexAdminManager = AfexAdminManager.getInterface(webView.getContext());
+                if(mAfexAdminManager != null) {
+                    mAfexAdminManager.lockNow();
+                    callbackContext.success("Lock Success");
+                }   
+            } else {
+                ICommandManager mCommandManager = CommandManager.getInterface(webView.getContext());
+                if(mCommandManager != null) {
+                    mCommandManager.wakeUp();
+                    callbackContext.success("Wake Up Success");
+                } 
+            }
+        } catch (AfexException e) {
+            callbackContext.error(e.toString());
+            return;
+        }
+        callbackContext.error("Unknown error occured.");
     }
 
 

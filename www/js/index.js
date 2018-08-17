@@ -67,6 +67,8 @@ var app = {
     document.getElementById('downloadAndInstallApk').addEventListener('click', this.downloadAndInstallApk)
     document.getElementById('takeScreenshot').addEventListener('click', this.takeScreenshot)
     document.getElementById('clearScreenshotDir').addEventListener('click', this.clearScreenshotDir)
+    document.getElementById('lockScreen').addEventListener('click', this.lockScreen)
+    document.getElementById('unlockScreen').addEventListener('click', this.unlockScreen)
     document.getElementById('getFileSystem').addEventListener('click', this.getFileSystemEvent)
     document.getElementById('createFile').addEventListener('click', this.createFile)
     document.getElementById('deleteFile').addEventListener('click', this.deleteFile)
@@ -490,6 +492,25 @@ var app = {
   clearScreenshotDir: function () {
     console.log('clearScreenshotDir btn clicked')
     CordovaAfexService.clearScreenshotDir(function (successCallback) {
+      console.log(successCallback);
+    }, function (errorCallback){
+      console.log(errorCallback)
+    }) 
+  },
+
+  lockScreen: function () {
+
+    CordovaAfexService.setScreenlock(true, function (successCallback) {
+      console.log(successCallback);
+    }, function (errorCallback){
+      console.log(errorCallback)
+    }) 
+
+  },
+
+  unlockScreen: function () {
+
+    CordovaAfexService.setScreenlock(false, function (successCallback) {
       console.log(successCallback);
     }, function (errorCallback){
       console.log(errorCallback)

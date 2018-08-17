@@ -1,1 +1,1 @@
-{"plugins":["cordova-plugin-whitelist","cordova-plugin-ardic","cordova-plugin-file-transfer","cordova-plugin-file","cordova-plugin-file-downloader","cordova-plugin-network-information","cordova-plugin-zip","cordova-plugin-file-md5"]}
+{"plugins":["cordova-plugin-whitelist","cordova-plugin-file","cordova-plugin-network-information","cordova-plugin-zip","cordova-plugin-file-md5","cordova-plugin-file-downloader","cordova-plugin-file-transfer","cordova-plugin-ardic"]}

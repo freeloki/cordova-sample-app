@@ -138,7 +138,7 @@ cordova.define("cordova-plugin-ardic.CordovaAfexService", function(require, expo
 
     /**
      * Silent install for given apk.
-     * @param {DOMString} apkPath Full path off apk
+     * @param {DOMString} apkPath Full path  apk
      * @param {function} successCallback callback for installation success.
      * @param {function} errorCallback callback for failure.     
      */
@@ -147,7 +147,7 @@ cordova.define("cordova-plugin-ardic.CordovaAfexService", function(require, expo
     },
 
     /**
-     * Take screenshot of device.
+     * Takes screenshot from device.
      * @param {function} successCallback returns file path of saved image.
      * @param {function} errorCallback callback for failure.     
      */
@@ -163,6 +163,30 @@ cordova.define("cordova-plugin-ardic.CordovaAfexService", function(require, expo
      */
     clearScreenshotDir: function(successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "CordovaAfexService", "clearScreenshotDir")
+    },
+
+    /**
+     * Read another package's shared pref.
+     * @param {DOMString} packageName package of target application.
+     * @param {DOMString} name shared preferences name.
+     * @param {DOMString} prefFile shared preferences key.
+     * @param {function} successCallback success message.
+     * @param {function} errorCallback callback for failure.
+     */
+    readOtherAppsSharedPref: function(packageName, name, prefFile, successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "CordovaAfexService", "readOtherAppsSharedPref", [packageName, name, prefFile])
+    },
+
+
+    /**
+     * lock/unlock device screen.
+     * @param {boolean} lock locks device if true otherwise unlocks the device.
+     * @param {function} successCallback success message.
+     * @param {function} errorCallback callback for failure.
+     * 
+     */
+    setScreenlock: function(lock, successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "CordovaAfexService", "setScreenlock", [lock])
     }
 };
 });

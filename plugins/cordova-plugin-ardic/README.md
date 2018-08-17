@@ -7,7 +7,7 @@
 
 In your application directory, write:
 ```
-cordova add cordova-plugin-ardic
+cordova plugin add cordova-plugin-ardic
 ```
 
 ## AFEX API List
@@ -15,7 +15,7 @@ cordova add cordova-plugin-ardic
 - [Echo](#echo)
 - [Device Unique Id](#device-unique-id)
 - [Reboot](#reboot)
-- [Afex Sdk Version](#afex-sdk-version)
+- [AFEX Sdk Version](#afex-sdk-version)
 - [Set Time Zone](#set-time-zone)
 - [Set Date](#set-date)
 - [Set Time](#set-time)
@@ -23,6 +23,9 @@ cordova add cordova-plugin-ardic
 - [Set Muted](#set-muted)
 - [Get Stream Volume Level](#get-stream-volume-level)
 - [Install Application](#install-application)
+- [Take Screenshot](#take-screenshot)
+- [Clear Screenshot Directory](#clear-screenshot-directory)
+- [Read Other Application Shared Preferences](#read-other-application-shared-preferences)
 
 ## Usage
 
@@ -35,7 +38,7 @@ This plugin uses the [Cordova File Plugin](https://github.com/apache/cordova-plu
 
 #### Echo
 
-echo is a simple test api for plugin installation. It echoes back the received message.
+Echo is a simple test API for plugin installation. It echoes back the received message.
 
 ```javascript
 /**
@@ -111,13 +114,13 @@ CordovaAfexService.rebootDevice(function (successCallback) {
 })
 ```
 
-#### Afex SDK Version
+#### AFEX SDK Version
 
 Returns AFEX version of Android OS.
 
 ```javascript
 /**
- * Afex version on Android OS.
+ * AFEX version on Android OS.
  *
  * @param {Function} successCallback afex version.
  * @param {Function} errorCallback error callback.
@@ -136,7 +139,7 @@ CordovaAfexService.getAfexSdkVersion(function (afexVersion) {
 ```
 #### Set Time Zone
 
-Sets device timezone.
+Sets device time zone.
 
 ```javascript
 /**
@@ -164,7 +167,7 @@ CordovaAfexService.setTimeZone("Europe/Athens", function (newTimeZone) {
 
 #### Set Date
 
-Sets device date. **Only sets year,month and day.**
+Sets device date. **Only sets year, month and day.**
 
 ```javascript
 /**
@@ -289,7 +292,7 @@ setMuted: function (streamType, isMute, successCallback, errorCallback) {
 
 ##### Sample Usage:
 
-if __*isMute*__ is true, mutes selected stream. Otherwise unmutes the selected stream.
+If __*isMute*__ is true, mutes selected stream. Otherwise unmutes the selected stream.
 
 ```javascript
 var STREAM_MUSIC = 3 // mutes stream. isMute=false
@@ -360,5 +363,87 @@ CordovaAfexService.installApplication(fullPath, function (successCallback) {
 })
 ```
 
+#### Take Screenshot
+Takes screenshot from device and saves it under, __ __Environment.getExternalDirectory + "AfexScreenshots"__
+
+- Sample directory:
+**/data/user/0/com.my.application.package.name/files/AfexScreenshots**
+- Sample filename:
+**2018-07-12-12:37:18.jpeg**
+- Sample success callback message is full path of saved image:
+**/data/user/0/com.my.application.package.name/files/2018-07-12-12:37:18.jpeg**
+
+```javascript
+/**
+ * Takes screenshot from device.
+ * @param {function} successCallback returns file path of saved image.
+ * @param {function} errorCallback callback for failure.     
+ */
+takeScreenshot: function (successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, "CordovaAfexService", "takeScreenshot")
+},
+```
+
+##### Sample Usage:
+
+```javascript
+CordovaAfexService.takeScreenshot(function (successCallback) {
+  console.log(successCallback);
+}, function (errorCallback){
+  console.log(errorCallback)
+})  
+```
+
+#### Clear Screenshot Directory
+Removes the **AfexScreenshots** directory and its contents.
+
+```javascript
+/**
+ * Clear all files including directory "AfexScreenshots"
+ * @param {function} successCallback success message.
+ * @param {function} errorCallback callback for failure.
+ *
+ */
+clearScreenshotDir: function(successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, "CordovaAfexService", "clearScreenshotDir")
+}
+```
+##### Sample Usage:
+
+```javascript
+CordovaAfexService.clearScreenshotDir(function (successCallback) {
+  console.log(successCallback);
+}, function (errorCallback){
+  console.log(errorCallback)
+})
+```
+
+#### Read Other Application Shared Preferences
+Read shared preferences from given package. Application's **process** and **shared user id** must be same.
+
+```javascript
+/**
+ * Read another package's shared pref
+ * @param {DOMString} packageName package of target application
+ * @param {DOMString} name shared preferences name
+ * @param {DOMString} prefFile shared preferences key
+ * @param {function} successCallback success message.
+ * @param {function} errorCallback callback for failure.
+ *
+ */
+readOtherAppsSharedPref: function(packageName, name, prefFile, successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, "CordovaAfexService", "readOtherAppsSharedPref", [packageName, name, prefFile])
+}
+}
+```
+##### Sample Usage:
+
+```javascript
+CordovaAfexService.readOtherAppsSharedPref("com.other.app.package.name", "shared_pref_name", "shared_pref_key", function (response) {
+  alert("Callback  Message Success: " + response)
+}, function (error) {
+  alert("Callback Message Failure  : " + error)
+})
+```
 
 #### [Back To Top](#ardic-cordova-android-plugin)
